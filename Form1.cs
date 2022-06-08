@@ -23,7 +23,7 @@ namespace Programmer
         public void print_log(string str)
         {
             string time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            rtb.AppendText("\r" + time + ": " + str);
+            rtb.AppendText("\r" + time + " " + str);
             rtb.ScrollToCaret();
         }
 
@@ -65,6 +65,7 @@ namespace Programmer
 
                     btn_connect.Text = "Disconect";
                     print_log("Connected to " + serial_port.PortName);
+                    btn_write.Enabled = true;
                 }
                 catch (Exception err)
                 {
@@ -83,6 +84,7 @@ namespace Programmer
                 cb_port.Enabled = true;
                 btn_update_port.Enabled = true;
                 print_log("Disconected");
+                btn_write.Enabled = false;
             }
         }
 
@@ -246,6 +248,23 @@ namespace Programmer
             {
                 tb_seed.Text = tb_seed.Text.ToUpper();
             }
+        }
+
+        private void btn_write_Click(object sender, EventArgs e)
+        {
+            if (serial_port.IsOpen)
+            {
+                try
+                {
+                    serial_port.Write("Test!");
+                }
+                catch (Exception err)
+                {
+                    //MessageBox.Show(err.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    print_log("ERROR! " + err.Message);
+                }
+            }
+            else print_log("ERROR! Serial Port Not Open!");
         }
 
         private void cb_br_SelectedIndexChanged(object sender, EventArgs e)

@@ -63,6 +63,7 @@
             this.rb_9or12v = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rtb = new System.Windows.Forms.RichTextBox();
+            this.btn_write = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -81,6 +82,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btn_write);
             this.groupBox1.Controls.Add(this.cb_timer);
             this.groupBox1.Controls.Add(this.cb_dis_auto);
             this.groupBox1.Controls.Add(this.tb_dis);
@@ -224,6 +226,7 @@
             this.tb_ser.Name = "tb_ser";
             this.tb_ser.Size = new System.Drawing.Size(101, 20);
             this.tb_ser.TabIndex = 4;
+            this.tb_ser.Text = "FFFFFFFF";
             this.tb_ser.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_ser.TextChanged += new System.EventHandler(this.tb_ser_TextChanged);
             this.tb_ser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_ser_KeyPress);
@@ -266,6 +269,7 @@
             this.tb_key.Name = "tb_key";
             this.tb_key.Size = new System.Drawing.Size(236, 20);
             this.tb_key.TabIndex = 0;
+            this.tb_key.Text = "FFFFFFFFFFFFFFFF";
             this.tb_key.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_key.TextChanged += new System.EventHandler(this.tb_key_TextChanged);
             this.tb_key.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_key_KeyPress);
@@ -461,6 +465,18 @@
             this.rtb.TabIndex = 2;
             this.rtb.Text = "";
             // 
+            // btn_write
+            // 
+            this.btn_write.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_write.Enabled = false;
+            this.btn_write.Location = new System.Drawing.Point(331, 169);
+            this.btn_write.Name = "btn_write";
+            this.btn_write.Size = new System.Drawing.Size(75, 23);
+            this.btn_write.TabIndex = 15;
+            this.btn_write.Text = "Write";
+            this.btn_write.UseVisualStyleBackColor = true;
+            this.btn_write.Click += new System.EventHandler(this.btn_write_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -529,6 +545,7 @@
         private System.Windows.Forms.TextBox tb_dis;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox cb_timer;
+        private System.Windows.Forms.Button btn_write;
     }
 }
 
