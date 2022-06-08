@@ -18,7 +18,7 @@ namespace Programmer
     {
         public void print_log(string str)
         {
-            string time = DateTime.Now.ToString("hh:mm:ss");
+            string time = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             rtb.AppendText("\r" + time + ": " + str);
             rtb.ScrollToCaret();
         }
@@ -96,10 +96,26 @@ namespace Programmer
         private void btn_gen_Click(object sender, EventArgs e)
         {
             tb_key.Text = GetRandomHexNumber(16);
-            print_log("Key Generated "+tb_key.Text);
+            print_log("KEY Generated "+tb_key.Text);
         }
 
         private void tb_key_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+
+            if (c != '\b' && !((c <= 0x66 && c >= 61) || (c <= 0x46 && c >= 0x41) || (c >= 0x30 && c <= 0x39)))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void btn_gen_ser_Click(object sender, EventArgs e)
+        {
+            tb_ser.Text = GetRandomHexNumber(8);
+            print_log("SER Generated " + tb_ser.Text);
+        }
+
+        private void tb_ser_KeyPress(object sender, KeyPressEventArgs e)
         {
             char c = e.KeyChar;
 
