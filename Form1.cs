@@ -129,9 +129,35 @@ namespace Programmer
             hex_KeyPress(sender, e);
         }
 
+        public void check_msb_ser()
+        {
+            if (tb_ser.Text.Length == 8)
+            {
+                int nser = 0, ser = int.Parse(tb_ser.Text, System.Globalization.NumberStyles.HexNumber);
+                if (cb_timer.Checked)
+                {
+                    nser = (int)(ser | 0x80000000);
+                }
+                else
+                {
+                    nser = (int)(ser & 0x7fffffff);
+                }
+                tb_ser.Text = Convert.ToString(nser, 16).ToUpper();
+
+                if (cb_dis_auto.Checked)
+                {
+                    int sser = int.Parse(tb_ser.Text, System.Globalization.NumberStyles.HexNumber);
+                    sser = sser & 0x3ff;
+                    tb_dis.Text = Convert.ToString(sser, 16).ToUpper();
+                }
+            }
+        }
+
         private void btn_gen_ser_Click(object sender, EventArgs e)
         {
             tb_ser.Text = GetRandomHexNumber(8);
+            check_msb_ser();
+
             print_log("SER Generated " + tb_ser.Text);
         }
 
@@ -166,6 +192,44 @@ namespace Programmer
             {
                 ovr_set = false;
             }
+        }
+
+        private void tb_dis_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            hex_KeyPress(sender, e);
+        }
+
+        private void cb_dis_auto_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cb_dis_auto.Checked)
+            {
+                tb_dis.Enabled = false;
+                check_msb_ser();            
+            }
+            else
+            {
+                tb_dis.Enabled = true;
+            }
+        }
+
+        private void tb_ser_TextChanged(object sender, EventArgs e)
+        {
+            check_msb_ser();
+        }
+
+        private void cb_timer_CheckedChanged(object sender, EventArgs e)
+        {
+            check_msb_ser();
+        }
+
+        private void tb_dis_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_dis.Text.Length == 3) tb_dis.Text = tb_dis.Text.ToUpper();
+        }
+
+        private void tb_key_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_key.Text.Length == 16) tb_key.Text=tb_key.Text.ToUpper();
         }
 
         private void cb_br_SelectedIndexChanged(object sender, EventArgs e)

@@ -30,6 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cb_timer = new System.Windows.Forms.CheckBox();
+            this.cb_dis_auto = new System.Windows.Forms.CheckBox();
+            this.tb_dis = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.cb_ovr_set = new System.Windows.Forms.CheckBox();
             this.tb_seed = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,13 +56,13 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cb_br = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.rb_6v = new System.Windows.Forms.RadioButton();
             this.rb_9or12v = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rtb = new System.Windows.Forms.RichTextBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.cb_br = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -67,9 +71,9 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -77,6 +81,10 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.cb_timer);
+            this.groupBox1.Controls.Add(this.cb_dis_auto);
+            this.groupBox1.Controls.Add(this.tb_dis);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.cb_ovr_set);
             this.groupBox1.Controls.Add(this.tb_seed);
             this.groupBox1.Controls.Add(this.label4);
@@ -90,17 +98,65 @@
             this.groupBox1.Controls.Add(this.tb_key);
             this.groupBox1.Location = new System.Drawing.Point(172, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(360, 237);
+            this.groupBox1.Size = new System.Drawing.Size(415, 202);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Main";
+            // 
+            // cb_timer
+            // 
+            this.cb_timer.AutoSize = true;
+            this.cb_timer.Checked = true;
+            this.cb_timer.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_timer.Location = new System.Drawing.Point(193, 52);
+            this.cb_timer.Name = "cb_timer";
+            this.cb_timer.Size = new System.Drawing.Size(133, 17);
+            this.cb_timer.TabIndex = 14;
+            this.cb_timer.Text = "ShutOFF Timer Enable";
+            this.cb_timer.UseVisualStyleBackColor = true;
+            this.cb_timer.CheckedChanged += new System.EventHandler(this.cb_timer_CheckedChanged);
+            // 
+            // cb_dis_auto
+            // 
+            this.cb_dis_auto.AutoSize = true;
+            this.cb_dis_auto.Checked = true;
+            this.cb_dis_auto.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_dis_auto.Location = new System.Drawing.Point(194, 133);
+            this.cb_dis_auto.Name = "cb_dis_auto";
+            this.cb_dis_auto.Size = new System.Drawing.Size(145, 17);
+            this.cb_dis_auto.TabIndex = 13;
+            this.cb_dis_auto.Text = "Auto Gen From SER LSB";
+            this.cb_dis_auto.UseVisualStyleBackColor = true;
+            this.cb_dis_auto.CheckedChanged += new System.EventHandler(this.cb_dis_auto_CheckedChanged);
+            // 
+            // tb_dis
+            // 
+            this.tb_dis.Enabled = false;
+            this.tb_dis.Location = new System.Drawing.Point(82, 131);
+            this.tb_dis.MaxLength = 3;
+            this.tb_dis.Name = "tb_dis";
+            this.tb_dis.Size = new System.Drawing.Size(101, 20);
+            this.tb_dis.TabIndex = 12;
+            this.tb_dis.Text = "000";
+            this.tb_dis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_dis.TextChanged += new System.EventHandler(this.tb_dis_TextChanged);
+            this.tb_dis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_dis_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 135);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(75, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Discrimination:";
             // 
             // cb_ovr_set
             // 
             this.cb_ovr_set.AutoSize = true;
             this.cb_ovr_set.Checked = true;
             this.cb_ovr_set.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_ovr_set.Location = new System.Drawing.Point(185, 79);
+            this.cb_ovr_set.Location = new System.Drawing.Point(193, 79);
             this.cb_ovr_set.Name = "cb_ovr_set";
             this.cb_ovr_set.Size = new System.Drawing.Size(68, 17);
             this.cb_ovr_set.TabIndex = 10;
@@ -110,10 +166,10 @@
             // 
             // tb_seed
             // 
-            this.tb_seed.Location = new System.Drawing.Point(55, 103);
+            this.tb_seed.Location = new System.Drawing.Point(82, 103);
             this.tb_seed.MaxLength = 4;
             this.tb_seed.Name = "tb_seed";
-            this.tb_seed.Size = new System.Drawing.Size(100, 20);
+            this.tb_seed.Size = new System.Drawing.Size(101, 20);
             this.tb_seed.TabIndex = 9;
             this.tb_seed.Text = "0000";
             this.tb_seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -130,10 +186,10 @@
             // 
             // tb_sync
             // 
-            this.tb_sync.Location = new System.Drawing.Point(55, 77);
+            this.tb_sync.Location = new System.Drawing.Point(82, 77);
             this.tb_sync.MaxLength = 4;
             this.tb_sync.Name = "tb_sync";
-            this.tb_sync.Size = new System.Drawing.Size(100, 20);
+            this.tb_sync.Size = new System.Drawing.Size(101, 20);
             this.tb_sync.TabIndex = 7;
             this.tb_sync.Text = "0000";
             this.tb_sync.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -151,7 +207,7 @@
             // btn_gen_ser
             // 
             this.btn_gen_ser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_gen_ser.Location = new System.Drawing.Point(277, 48);
+            this.btn_gen_ser.Location = new System.Drawing.Point(332, 48);
             this.btn_gen_ser.Name = "btn_gen_ser";
             this.btn_gen_ser.Size = new System.Drawing.Size(75, 23);
             this.btn_gen_ser.TabIndex = 5;
@@ -161,14 +217,13 @@
             // 
             // tb_ser
             // 
-            this.tb_ser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_ser.Location = new System.Drawing.Point(54, 50);
+            this.tb_ser.Location = new System.Drawing.Point(82, 50);
             this.tb_ser.MaxLength = 8;
             this.tb_ser.Name = "tb_ser";
-            this.tb_ser.Size = new System.Drawing.Size(216, 20);
+            this.tb_ser.Size = new System.Drawing.Size(101, 20);
             this.tb_ser.TabIndex = 4;
             this.tb_ser.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_ser.TextChanged += new System.EventHandler(this.tb_ser_TextChanged);
             this.tb_ser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_ser_KeyPress);
             // 
             // label2
@@ -183,7 +238,7 @@
             // btn_gen_key
             // 
             this.btn_gen_key.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_gen_key.Location = new System.Drawing.Point(277, 22);
+            this.btn_gen_key.Location = new System.Drawing.Point(332, 22);
             this.btn_gen_key.Name = "btn_gen_key";
             this.btn_gen_key.Size = new System.Drawing.Size(75, 23);
             this.btn_gen_key.TabIndex = 2;
@@ -204,12 +259,13 @@
             // 
             this.tb_key.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_key.Location = new System.Drawing.Point(54, 23);
+            this.tb_key.Location = new System.Drawing.Point(82, 23);
             this.tb_key.MaxLength = 16;
             this.tb_key.Name = "tb_key";
-            this.tb_key.Size = new System.Drawing.Size(216, 20);
+            this.tb_key.Size = new System.Drawing.Size(236, 20);
             this.tb_key.TabIndex = 0;
             this.tb_key.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_key.TextChanged += new System.EventHandler(this.tb_key_TextChanged);
             this.tb_key.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_key_KeyPress);
             // 
             // groupBox2
@@ -259,7 +315,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(535, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(590, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -284,9 +340,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 403);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 357);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(535, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(590, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -316,9 +372,33 @@
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
-            this.splitContainer1.Size = new System.Drawing.Size(535, 373);
-            this.splitContainer1.SplitterDistance = 243;
+            this.splitContainer1.Size = new System.Drawing.Size(590, 327);
+            this.splitContainer1.SplitterDistance = 208;
             this.splitContainer1.TabIndex = 5;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.cb_br);
+            this.groupBox5.Location = new System.Drawing.Point(3, 154);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(163, 50);
+            this.groupBox5.TabIndex = 12;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Baud Rate";
+            // 
+            // cb_br
+            // 
+            this.cb_br.FormattingEnabled = true;
+            this.cb_br.Items.AddRange(new object[] {
+            "00 400uS ALL",
+            "01 200uS 1/2",
+            "10 100uS 1/2",
+            "11 100uS  1/4"});
+            this.cb_br.Location = new System.Drawing.Point(6, 20);
+            this.cb_br.Name = "cb_br";
+            this.cb_br.Size = new System.Drawing.Size(152, 21);
+            this.cb_br.TabIndex = 0;
+            this.cb_br.SelectedIndexChanged += new System.EventHandler(this.cb_br_SelectedIndexChanged);
             // 
             // groupBox4
             // 
@@ -363,7 +443,7 @@
             this.groupBox3.Controls.Add(this.rtb);
             this.groupBox3.Location = new System.Drawing.Point(3, -1);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(529, 124);
+            this.groupBox3.Size = new System.Drawing.Size(584, 109);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Log";
@@ -375,44 +455,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtb.Location = new System.Drawing.Point(6, 14);
             this.rtb.Name = "rtb";
-            this.rtb.Size = new System.Drawing.Size(517, 104);
+            this.rtb.Size = new System.Drawing.Size(572, 88);
             this.rtb.TabIndex = 2;
             this.rtb.Text = "";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.cb_br);
-            this.groupBox5.Location = new System.Drawing.Point(3, 154);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(163, 50);
-            this.groupBox5.TabIndex = 12;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Baud Rate";
-            // 
-            // cb_br
-            // 
-            this.cb_br.FormattingEnabled = true;
-            this.cb_br.Items.AddRange(new object[] {
-            "00 400uS ALL",
-            "01 200uS 1/2",
-            "10 100uS 1/2",
-            "11 100uS  1/4"});
-            this.cb_br.Location = new System.Drawing.Point(6, 20);
-            this.cb_br.Name = "cb_br";
-            this.cb_br.Size = new System.Drawing.Size(152, 21);
-            this.cb_br.TabIndex = 0;
-            this.cb_br.SelectedIndexChanged += new System.EventHandler(this.cb_br_SelectedIndexChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(535, 425);
+            this.ClientSize = new System.Drawing.Size(590, 379);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(551, 464);
+            this.MinimumSize = new System.Drawing.Size(606, 418);
             this.Name = "Form1";
             this.Text = "HSC Proggramer";
             this.groupBox1.ResumeLayout(false);
@@ -426,10 +482,10 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -467,6 +523,10 @@
         private System.Windows.Forms.RadioButton rb_9or12v;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ComboBox cb_br;
+        private System.Windows.Forms.CheckBox cb_dis_auto;
+        private System.Windows.Forms.TextBox tb_dis;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox cb_timer;
     }
 }
 
