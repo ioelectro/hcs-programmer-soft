@@ -34,9 +34,13 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.serial_port = new System.IO.Ports.SerialPort(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.cb_port = new System.Windows.Forms.ComboBox();
+            this.btn_update_port = new System.Windows.Forms.Button();
+            this.btn_connect = new System.Windows.Forms.Button();
+            this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -56,9 +60,12 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btn_connect);
+            this.groupBox2.Controls.Add(this.btn_update_port);
+            this.groupBox2.Controls.Add(this.cb_port);
             this.groupBox2.Location = new System.Drawing.Point(360, 27);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(188, 136);
+            this.groupBox2.Size = new System.Drawing.Size(163, 78);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Port";
@@ -70,7 +77,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(560, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(535, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -86,9 +93,9 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             // 
-            // serialPort1
+            // serial_port
             // 
-            this.serialPort1.BaudRate = 115200;
+            this.serial_port.BaudRate = 115200;
             // 
             // statusStrip1
             // 
@@ -96,7 +103,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 403);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(560, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(535, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -106,19 +113,48 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel1.Text = "Ready";
             // 
+            // cb_port
+            // 
+            this.cb_port.FormattingEnabled = true;
+            this.cb_port.Location = new System.Drawing.Point(7, 20);
+            this.cb_port.Name = "cb_port";
+            this.cb_port.Size = new System.Drawing.Size(95, 21);
+            this.cb_port.TabIndex = 0;
+            // 
+            // btn_update_port
+            // 
+            this.btn_update_port.Location = new System.Drawing.Point(108, 18);
+            this.btn_update_port.Name = "btn_update_port";
+            this.btn_update_port.Size = new System.Drawing.Size(50, 23);
+            this.btn_update_port.TabIndex = 1;
+            this.btn_update_port.Text = "Update";
+            this.btn_update_port.UseVisualStyleBackColor = true;
+            this.btn_update_port.Click += new System.EventHandler(this.btn_update_port_Click);
+            // 
+            // btn_connect
+            // 
+            this.btn_connect.Location = new System.Drawing.Point(7, 48);
+            this.btn_connect.Name = "btn_connect";
+            this.btn_connect.Size = new System.Drawing.Size(150, 23);
+            this.btn_connect.TabIndex = 2;
+            this.btn_connect.Text = "Connect";
+            this.btn_connect.UseVisualStyleBackColor = true;
+            this.btn_connect.Click += new System.EventHandler(this.btn_connect_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(560, 425);
+            this.ClientSize = new System.Drawing.Size(535, 425);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(576, 464);
+            this.MinimumSize = new System.Drawing.Size(551, 464);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.groupBox2.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
@@ -135,9 +171,12 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.IO.Ports.SerialPort serialPort1;
+        private System.IO.Ports.SerialPort serial_port;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.Button btn_connect;
+        private System.Windows.Forms.Button btn_update_port;
+        private System.Windows.Forms.ComboBox cb_port;
     }
 }
 
