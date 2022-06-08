@@ -16,6 +16,8 @@ namespace Programmer
 {
     public partial class Form1 : Form
     {
+        bool vbat_sel = true;
+
         public void print_log(string str)
         {
             string time = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
@@ -130,6 +132,25 @@ namespace Programmer
             print_log("SER Generated " + tb_ser.Text);
         }
 
+        private void tb_seed_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            hex_KeyPress(sender, e);
+        }
 
+        private void rb_9or12v_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rb_9or12v.Checked)
+            {
+                vbat_sel = true;
+            }
+        }
+
+        private void rb_6v_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rb_6v.Checked)
+            {
+                vbat_sel = false;
+            }
+        }
     }
 }

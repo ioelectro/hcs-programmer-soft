@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cb_ovr_set = new System.Windows.Forms.CheckBox();
+            this.tb_seed = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.tb_sync = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_gen_ser = new System.Windows.Forms.Button();
@@ -49,6 +52,9 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rb_6v = new System.Windows.Forms.RadioButton();
+            this.rb_9or12v = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rtb = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
@@ -59,6 +65,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +74,9 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.cb_ovr_set);
+            this.groupBox1.Controls.Add(this.tb_seed);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.tb_sync);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.btn_gen_ser);
@@ -80,7 +90,39 @@
             this.groupBox1.Size = new System.Drawing.Size(360, 237);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "main";
+            this.groupBox1.Text = "Main";
+            // 
+            // cb_ovr_set
+            // 
+            this.cb_ovr_set.AutoSize = true;
+            this.cb_ovr_set.Checked = true;
+            this.cb_ovr_set.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_ovr_set.Location = new System.Drawing.Point(185, 79);
+            this.cb_ovr_set.Name = "cb_ovr_set";
+            this.cb_ovr_set.Size = new System.Drawing.Size(68, 17);
+            this.cb_ovr_set.TabIndex = 10;
+            this.cb_ovr_set.Text = "OVR Set";
+            this.cb_ovr_set.UseVisualStyleBackColor = true;
+            // 
+            // tb_seed
+            // 
+            this.tb_seed.Location = new System.Drawing.Point(55, 103);
+            this.tb_seed.MaxLength = 4;
+            this.tb_seed.Name = "tb_seed";
+            this.tb_seed.Size = new System.Drawing.Size(100, 20);
+            this.tb_seed.TabIndex = 9;
+            this.tb_seed.Text = "0000";
+            this.tb_seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_seed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_seed_KeyPress);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 108);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "SEED:";
             // 
             // tb_sync
             // 
@@ -137,7 +179,7 @@
             // btn_gen_key
             // 
             this.btn_gen_key.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_gen_key.Location = new System.Drawing.Point(276, 22);
+            this.btn_gen_key.Location = new System.Drawing.Point(277, 22);
             this.btn_gen_key.Name = "btn_gen_key";
             this.btn_gen_key.Size = new System.Drawing.Size(75, 23);
             this.btn_gen_key.TabIndex = 2;
@@ -176,7 +218,7 @@
             this.groupBox2.Size = new System.Drawing.Size(163, 78);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "port";
+            this.groupBox2.Text = "Port";
             // 
             // btn_connect
             // 
@@ -232,6 +274,7 @@
             // serial_port
             // 
             this.serial_port.BaudRate = 115200;
+            this.serial_port.WriteTimeout = 1000;
             // 
             // statusStrip1
             // 
@@ -260,6 +303,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             // 
@@ -270,6 +314,41 @@
             this.splitContainer1.Size = new System.Drawing.Size(535, 373);
             this.splitContainer1.SplitterDistance = 243;
             this.splitContainer1.TabIndex = 5;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.rb_6v);
+            this.groupBox4.Controls.Add(this.rb_9or12v);
+            this.groupBox4.Location = new System.Drawing.Point(3, 85);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(163, 63);
+            this.groupBox4.TabIndex = 11;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "VDD";
+            // 
+            // rb_6v
+            // 
+            this.rb_6v.AutoSize = true;
+            this.rb_6v.Location = new System.Drawing.Point(7, 39);
+            this.rb_6v.Name = "rb_6v";
+            this.rb_6v.Size = new System.Drawing.Size(41, 17);
+            this.rb_6v.TabIndex = 1;
+            this.rb_6v.Text = "6 V";
+            this.rb_6v.UseVisualStyleBackColor = true;
+            this.rb_6v.CheckedChanged += new System.EventHandler(this.rb_6v_CheckedChanged);
+            // 
+            // rb_9or12v
+            // 
+            this.rb_9or12v.AutoSize = true;
+            this.rb_9or12v.Checked = true;
+            this.rb_9or12v.Location = new System.Drawing.Point(7, 18);
+            this.rb_9or12v.Name = "rb_9or12v";
+            this.rb_9or12v.Size = new System.Drawing.Size(65, 17);
+            this.rb_9or12v.TabIndex = 0;
+            this.rb_9or12v.TabStop = true;
+            this.rb_9or12v.Text = "9 or12 V";
+            this.rb_9or12v.UseVisualStyleBackColor = true;
+            this.rb_9or12v.CheckedChanged += new System.EventHandler(this.rb_9or12v_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -282,7 +361,7 @@
             this.groupBox3.Size = new System.Drawing.Size(529, 124);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "log";
+            this.groupBox3.Text = "Log";
             // 
             // rtb
             // 
@@ -318,6 +397,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -348,6 +429,12 @@
         private System.Windows.Forms.Button btn_gen_ser;
         private System.Windows.Forms.TextBox tb_sync;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox tb_seed;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox cb_ovr_set;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.RadioButton rb_6v;
+        private System.Windows.Forms.RadioButton rb_9or12v;
     }
 }
 
