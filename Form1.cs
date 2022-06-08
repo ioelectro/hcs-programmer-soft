@@ -99,7 +99,7 @@ namespace Programmer
             print_log("KEY Generated "+tb_key.Text);
         }
 
-        private void tb_key_KeyPress(object sender, KeyPressEventArgs e)
+        private void hex_KeyPress(object sender, KeyPressEventArgs e)
         {
             char c = e.KeyChar;
 
@@ -107,6 +107,21 @@ namespace Programmer
             {
                 e.Handled = true;
             }
+        }
+
+        private void tb_key_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            hex_KeyPress(sender, e);
+        }
+
+        private void tb_ser_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            hex_KeyPress(sender, e);
+        }
+
+        private void tb_sync_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            hex_KeyPress(sender, e);
         }
 
         private void btn_gen_ser_Click(object sender, EventArgs e)
@@ -115,14 +130,6 @@ namespace Programmer
             print_log("SER Generated " + tb_ser.Text);
         }
 
-        private void tb_ser_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char c = e.KeyChar;
 
-            if (c != '\b' && !((c <= 0x66 && c >= 61) || (c <= 0x46 && c >= 0x41) || (c >= 0x30 && c <= 0x39)))
-            {
-                e.Handled = true;
-            }
-        }
     }
 }

@@ -30,6 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tb_sync = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btn_gen_ser = new System.Windows.Forms.Button();
+            this.tb_ser = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btn_gen_key = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tb_key = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btn_connect = new System.Windows.Forms.Button();
             this.btn_update_port = new System.Windows.Forms.Button();
@@ -43,12 +51,6 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rtb = new System.Windows.Forms.RichTextBox();
-            this.tb_key = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btn_gen_key = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tb_ser = new System.Windows.Forms.TextBox();
-            this.btn_gen_ser = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -65,6 +67,8 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.tb_sync);
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.btn_gen_ser);
             this.groupBox1.Controls.Add(this.tb_ser);
             this.groupBox1.Controls.Add(this.label2);
@@ -77,6 +81,90 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "main";
+            // 
+            // tb_sync
+            // 
+            this.tb_sync.Location = new System.Drawing.Point(55, 77);
+            this.tb_sync.MaxLength = 4;
+            this.tb_sync.Name = "tb_sync";
+            this.tb_sync.Size = new System.Drawing.Size(100, 20);
+            this.tb_sync.TabIndex = 7;
+            this.tb_sync.Text = "0000";
+            this.tb_sync.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_sync.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_sync_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 82);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "SYNC:";
+            // 
+            // btn_gen_ser
+            // 
+            this.btn_gen_ser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_gen_ser.Location = new System.Drawing.Point(277, 48);
+            this.btn_gen_ser.Name = "btn_gen_ser";
+            this.btn_gen_ser.Size = new System.Drawing.Size(75, 23);
+            this.btn_gen_ser.TabIndex = 5;
+            this.btn_gen_ser.Text = "Generate";
+            this.btn_gen_ser.UseVisualStyleBackColor = true;
+            this.btn_gen_ser.Click += new System.EventHandler(this.btn_gen_ser_Click);
+            // 
+            // tb_ser
+            // 
+            this.tb_ser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_ser.Location = new System.Drawing.Point(54, 50);
+            this.tb_ser.MaxLength = 8;
+            this.tb_ser.Name = "tb_ser";
+            this.tb_ser.Size = new System.Drawing.Size(216, 20);
+            this.tb_ser.TabIndex = 4;
+            this.tb_ser.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_ser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_ser_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 54);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "SER:";
+            // 
+            // btn_gen_key
+            // 
+            this.btn_gen_key.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_gen_key.Location = new System.Drawing.Point(276, 22);
+            this.btn_gen_key.Name = "btn_gen_key";
+            this.btn_gen_key.Size = new System.Drawing.Size(75, 23);
+            this.btn_gen_key.TabIndex = 2;
+            this.btn_gen_key.Text = "Generate";
+            this.btn_gen_key.UseVisualStyleBackColor = true;
+            this.btn_gen_key.Click += new System.EventHandler(this.btn_gen_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "KEY:";
+            // 
+            // tb_key
+            // 
+            this.tb_key.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_key.Location = new System.Drawing.Point(54, 23);
+            this.tb_key.MaxLength = 16;
+            this.tb_key.Name = "tb_key";
+            this.tb_key.Size = new System.Drawing.Size(216, 20);
+            this.tb_key.TabIndex = 0;
+            this.tb_key.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_key.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_key_KeyPress);
             // 
             // groupBox2
             // 
@@ -207,70 +295,6 @@
             this.rtb.TabIndex = 2;
             this.rtb.Text = "";
             // 
-            // tb_key
-            // 
-            this.tb_key.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_key.Location = new System.Drawing.Point(54, 23);
-            this.tb_key.MaxLength = 16;
-            this.tb_key.Name = "tb_key";
-            this.tb_key.Size = new System.Drawing.Size(216, 20);
-            this.tb_key.TabIndex = 0;
-            this.tb_key.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tb_key.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_key_KeyPress);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "KEY:";
-            // 
-            // btn_gen_key
-            // 
-            this.btn_gen_key.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_gen_key.Location = new System.Drawing.Point(276, 22);
-            this.btn_gen_key.Name = "btn_gen_key";
-            this.btn_gen_key.Size = new System.Drawing.Size(75, 23);
-            this.btn_gen_key.TabIndex = 2;
-            this.btn_gen_key.Text = "Generate";
-            this.btn_gen_key.UseVisualStyleBackColor = true;
-            this.btn_gen_key.Click += new System.EventHandler(this.btn_gen_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 54);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "SER:";
-            // 
-            // tb_ser
-            // 
-            this.tb_ser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_ser.Location = new System.Drawing.Point(54, 50);
-            this.tb_ser.MaxLength = 8;
-            this.tb_ser.Name = "tb_ser";
-            this.tb_ser.Size = new System.Drawing.Size(216, 20);
-            this.tb_ser.TabIndex = 4;
-            this.tb_ser.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tb_ser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_ser_KeyPress);
-            // 
-            // btn_gen_ser
-            // 
-            this.btn_gen_ser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_gen_ser.Location = new System.Drawing.Point(277, 48);
-            this.btn_gen_ser.Name = "btn_gen_ser";
-            this.btn_gen_ser.Size = new System.Drawing.Size(75, 23);
-            this.btn_gen_ser.TabIndex = 5;
-            this.btn_gen_ser.Text = "Generate";
-            this.btn_gen_ser.UseVisualStyleBackColor = true;
-            this.btn_gen_ser.Click += new System.EventHandler(this.btn_gen_ser_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -322,6 +346,8 @@
         private System.Windows.Forms.TextBox tb_ser;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_gen_ser;
+        private System.Windows.Forms.TextBox tb_sync;
+        private System.Windows.Forms.Label label3;
     }
 }
 
