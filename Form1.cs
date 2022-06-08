@@ -9,11 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.IO.Ports;
+using System.Diagnostics;
+using System.Globalization;
 
 namespace Programmer
 {
     public partial class Form1 : Form
     {
+        public void print_log(string str)
+        {
+            string time = DateTime.Now.ToString("hh:mm:ss");
+            rtb.AppendText("\r" + time + ": " + str);
+            rtb.ScrollToCaret();
+        }
+
         private void update_serial_port_list()
         {
             cb_port.Items.Clear();
@@ -21,6 +30,7 @@ namespace Programmer
             {
                 cb_port.Items.Add(str_getPortsName);
             }
+            print_log("Com ports reloaded");
         }
 
         public Form1()
@@ -49,10 +59,12 @@ namespace Programmer
                     btn_update_port.Enabled = false;
 
                     btn_connect.Text = "Disconect";
+                    print_log("Connected to " + serial_port.PortName);
                 }
                 catch (Exception err)
                 {
-                    MessageBox.Show(err.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //MessageBox.Show(err.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    print_log("ERROR! " + err.Message);
                 }
             }
             else
@@ -65,8 +77,36 @@ namespace Programmer
 
                 cb_port.Enabled = true;
                 btn_update_port.Enabled = true;
+                print_log("Disconected");
             }
         }
 
+        static Random random = new Random();
+        public static string GetRandomHexNumber(int digits)
+        {
+            byte[] buffer = new byte[digits / 2];
+            random.NextBytes(buffer);
+            string result = String.Concat(buffer.Select(x => x.ToString("X2")).ToArray());
+            if (digits % 2 == 0)
+                return result;
+            return result + random.Next(16).ToString("X");
+        }
+
+
+        private void btn_gen_Click(object sender, EventArgs e)
+        {
+            tb_key.Text = GetRandomHexNumber(16);
+            print_log("Key Generated "+tb_key.Text);
+        }
+
+        private void tb_key_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char c = e.KeyChar;
+
+            if (c != '\b' && !((c <= 0x66 && c >= 61) || (c <= 0x46 && c >= 0x41) || (c >= 0x30 && c <= 0x39)))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

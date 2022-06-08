@@ -42,7 +42,11 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.rtb = new System.Windows.Forms.RichTextBox();
+            this.tb_key = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btn_gen = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -58,12 +62,15 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btn_gen);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.tb_key);
             this.groupBox1.Location = new System.Drawing.Point(172, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(360, 247);
+            this.groupBox1.Size = new System.Drawing.Size(360, 237);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Main";
+            this.groupBox1.Text = "main";
             // 
             // groupBox2
             // 
@@ -75,7 +82,7 @@
             this.groupBox2.Size = new System.Drawing.Size(163, 78);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Port";
+            this.groupBox2.Text = "port";
             // 
             // btn_connect
             // 
@@ -167,7 +174,7 @@
             this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
             this.splitContainer1.Size = new System.Drawing.Size(535, 373);
-            this.splitContainer1.SplitterDistance = 253;
+            this.splitContainer1.SplitterDistance = 243;
             this.splitContainer1.TabIndex = 5;
             // 
             // groupBox3
@@ -175,24 +182,56 @@
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.richTextBox1);
+            this.groupBox3.Controls.Add(this.rtb);
             this.groupBox3.Location = new System.Drawing.Point(3, -1);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(529, 114);
+            this.groupBox3.Size = new System.Drawing.Size(529, 124);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Log";
+            this.groupBox3.Text = "log";
             // 
-            // richTextBox1
+            // rtb
             // 
-            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.rtb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.Location = new System.Drawing.Point(6, 14);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(517, 94);
-            this.richTextBox1.TabIndex = 2;
-            this.richTextBox1.Text = "";
+            this.rtb.Location = new System.Drawing.Point(6, 14);
+            this.rtb.Name = "rtb";
+            this.rtb.Size = new System.Drawing.Size(517, 104);
+            this.rtb.TabIndex = 2;
+            this.rtb.Text = "";
+            // 
+            // tb_key
+            // 
+            this.tb_key.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_key.Location = new System.Drawing.Point(41, 23);
+            this.tb_key.MaxLength = 16;
+            this.tb_key.Name = "tb_key";
+            this.tb_key.Size = new System.Drawing.Size(229, 20);
+            this.tb_key.TabIndex = 0;
+            this.tb_key.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_key.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_key_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "KEY:";
+            // 
+            // btn_gen
+            // 
+            this.btn_gen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_gen.Location = new System.Drawing.Point(276, 22);
+            this.btn_gen.Name = "btn_gen";
+            this.btn_gen.Size = new System.Drawing.Size(75, 23);
+            this.btn_gen.TabIndex = 2;
+            this.btn_gen.Text = "Generate";
+            this.btn_gen.UseVisualStyleBackColor = true;
+            this.btn_gen.Click += new System.EventHandler(this.btn_gen_Click);
             // 
             // Form1
             // 
@@ -206,6 +245,8 @@
             this.MinimumSize = new System.Drawing.Size(551, 464);
             this.Name = "Form1";
             this.Text = "HSC Proggramer";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -236,7 +277,10 @@
         private System.Windows.Forms.ComboBox cb_port;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox rtb;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tb_key;
+        private System.Windows.Forms.Button btn_gen;
     }
 }
 
