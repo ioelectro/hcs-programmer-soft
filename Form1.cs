@@ -63,9 +63,10 @@ namespace Programmer
 
                 btn_connect.Text = "Connect";
 
-                cb_port.Enabled = Enabled;
-                btn_update_port.Enabled = Enabled;
+                cb_port.Enabled = true;
+                btn_update_port.Enabled = true;
             }
         }
+
     }
 }
