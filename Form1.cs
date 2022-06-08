@@ -22,7 +22,7 @@ namespace Programmer
 
         public void print_log(string str)
         {
-            string time = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+            string time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
             rtb.AppendText("\r" + time + ": " + str);
             rtb.ScrollToCaret();
         }
@@ -230,6 +230,22 @@ namespace Programmer
         private void tb_key_TextChanged(object sender, EventArgs e)
         {
             if (tb_key.Text.Length == 16) tb_key.Text=tb_key.Text.ToUpper();
+        }
+
+        private void tb_sync_TextChanged(object sender, EventArgs e)
+        {
+            if(tb_sync.Text.Length==4)
+            {
+                tb_sync.Text = tb_sync.Text.ToUpper();
+            }
+        }
+
+        private void tb_seed_TextChanged(object sender, EventArgs e)
+        {
+            if(tb_seed.Text.Length==4)
+            {
+                tb_seed.Text = tb_seed.Text.ToUpper();
+            }
         }
 
         private void cb_br_SelectedIndexChanged(object sender, EventArgs e)

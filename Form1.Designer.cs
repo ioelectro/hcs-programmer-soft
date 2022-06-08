@@ -173,6 +173,7 @@
             this.tb_seed.TabIndex = 9;
             this.tb_seed.Text = "0000";
             this.tb_seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_seed.TextChanged += new System.EventHandler(this.tb_seed_TextChanged);
             this.tb_seed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_seed_KeyPress);
             // 
             // label4
@@ -193,6 +194,7 @@
             this.tb_sync.TabIndex = 7;
             this.tb_sync.Text = "0000";
             this.tb_sync.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_sync.TextChanged += new System.EventHandler(this.tb_sync_TextChanged);
             this.tb_sync.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_sync_KeyPress);
             // 
             // label3
