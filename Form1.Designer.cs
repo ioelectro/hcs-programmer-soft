@@ -57,6 +57,8 @@
             this.rb_9or12v = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rtb = new System.Windows.Forms.RichTextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cb_br = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -67,6 +69,7 @@
             this.splitContainer1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -103,6 +106,7 @@
             this.cb_ovr_set.TabIndex = 10;
             this.cb_ovr_set.Text = "OVR Set";
             this.cb_ovr_set.UseVisualStyleBackColor = true;
+            this.cb_ovr_set.CheckedChanged += new System.EventHandler(this.cb_ovr_set_CheckedChanged);
             // 
             // tb_seed
             // 
@@ -303,6 +307,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox5);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
@@ -374,6 +379,30 @@
             this.rtb.TabIndex = 2;
             this.rtb.Text = "";
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.cb_br);
+            this.groupBox5.Location = new System.Drawing.Point(3, 154);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(163, 50);
+            this.groupBox5.TabIndex = 12;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Baud Rate";
+            // 
+            // cb_br
+            // 
+            this.cb_br.FormattingEnabled = true;
+            this.cb_br.Items.AddRange(new object[] {
+            "00 400uS ALL",
+            "01 200uS 1/2",
+            "10 100uS 1/2",
+            "11 100uS  1/4"});
+            this.cb_br.Location = new System.Drawing.Point(6, 20);
+            this.cb_br.Name = "cb_br";
+            this.cb_br.Size = new System.Drawing.Size(152, 21);
+            this.cb_br.TabIndex = 0;
+            this.cb_br.SelectedIndexChanged += new System.EventHandler(this.cb_br_SelectedIndexChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -400,6 +429,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -435,6 +465,8 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.RadioButton rb_6v;
         private System.Windows.Forms.RadioButton rb_9or12v;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.ComboBox cb_br;
     }
 }
 

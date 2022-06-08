@@ -17,6 +17,8 @@ namespace Programmer
     public partial class Form1 : Form
     {
         bool vbat_sel = true;
+        bool ovr_set = true;
+        bool bsl_0 = false, bsl_1 = false;
 
         public void print_log(string str)
         {
@@ -39,6 +41,7 @@ namespace Programmer
         {
             InitializeComponent();
             update_serial_port_list();
+            cb_br.SelectedIndex = 0;
         }
 
 
@@ -150,6 +153,30 @@ namespace Programmer
             if (rb_6v.Checked)
             {
                 vbat_sel = false;
+            }
+        }
+
+        private void cb_ovr_set_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cb_ovr_set.Checked)
+            {
+                ovr_set = true;
+            }
+            else
+            {
+                ovr_set = false;
+            }
+        }
+
+        private void cb_br_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(cb_br.SelectedIndex)
+            {
+                case 0: bsl_0 = false;bsl_1 = false;break;
+                case 1: bsl_0 = true; bsl_1 = false; break;
+                case 2: bsl_0 = false; bsl_1 = true; break;
+                case 3: bsl_0 = true; bsl_1 = true; break;
+                default:break;
             }
         }
     }
