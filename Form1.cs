@@ -22,6 +22,7 @@ namespace Programmer
         bool bsl_0 = false, bsl_1 = false;
 
         int tim1_c = 0;
+        int[] Data = new int[12];
 
         public void print_log(string str)
         {
@@ -278,7 +279,36 @@ namespace Programmer
             {
                 try
                 {
-                    string TxData = "eTest";
+                    Int64 key= Int64.Parse(tb_key.Text, System.Globalization.NumberStyles.HexNumber);
+                    Int32 ser = Int32.Parse(tb_ser.Text, System.Globalization.NumberStyles.HexNumber);
+                    int seed=int.Parse(tb_seed.Text, System.Globalization.NumberStyles.HexNumber);
+                    int sync = int.Parse(tb_sync.Text, System.Globalization.NumberStyles.HexNumber);
+                    int dis = int.Parse(tb_dis.Text, System.Globalization.NumberStyles.HexNumber);
+
+
+                    Data[0] = (int)((key >> (16 * 0)) & 0xffff);
+                    Data[1] = (int)((key >> (16 * 1)) & 0xffff);
+                    Data[2] = (int)((key >> (16 * 2)) & 0xffff);
+                    Data[3] = (int)((key >> (16 * 3)) & 0xffff);
+
+                    Data[4] = sync;
+
+                    Data[5] = 0;
+
+                    Data[6] = (int)((ser >> (16 * 0)) & 0xffff);
+                    Data[7] = (int)((ser >> (16 * 1)) & 0xffff);
+
+                    Data[8] = (int)((seed >> (16 * 0)) & 0xffff);
+                    Data[9] = (int)((seed >> (16 * 1)) & 0xffff);
+
+                    Data[10] = 0;
+
+                    Data[11] = ((bsl_1 ? 1 : 0) << 14) | ((bsl_0 ? 1 : 0) << 13) | ((vbat_sel ? 1 : 0) << 12) | ((ovr_set ? 1 : 0) << 11) | ((ovr_set ? 1 : 0) << 10) | dis;
+
+
+
+
+
                     serial_port.WriteLine(TxData);
                     print_log("TX: "+ TxData);
                 }
@@ -356,7 +386,7 @@ namespace Programmer
         private void timer1_Tick(object sender, EventArgs e)
         {
             tim1_c++;
-            if(tim1_c>10)
+            if(tim1_c>20)
             {
                 tim1_c = 0;
                 timer1.Stop();
