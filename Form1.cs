@@ -462,28 +462,31 @@ namespace Programmer
 
         private void saveLogToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-            saveFileDialog1.Title = "Save an text File";
-
-            saveFileDialog1.FileName= DateTime.Now.ToString("yyyyMMddHHmmss");
-
-            saveFileDialog1.ShowDialog();
-
-            // If the file name is not an empty string open it for saving.
-            if (saveFileDialog1.FileName != "")
+            if (rtb.Text.Length > 1)
             {
-                // Saves the Image via a FileStream created by the OpenFile method.
-                System.IO.FileStream fs =
-                    (System.IO.FileStream)saveFileDialog1.OpenFile();
-                byte b;
-                for(int i=0;i<rtb.Text.Length;i++)
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+                saveFileDialog1.Title = "Save an text File";
+
+                saveFileDialog1.FileName = DateTime.Now.ToString("yyyyMMddHHmmss");
+
+                saveFileDialog1.ShowDialog();
+
+                // If the file name is not an empty string open it for saving.
+                if (saveFileDialog1.FileName != "")
                 {
-                    b = (byte)rtb.Text[i];
-                    fs.WriteByte(b);
+                    // Saves the Image via a FileStream created by the OpenFile method.
+                    System.IO.FileStream fs =
+                        (System.IO.FileStream)saveFileDialog1.OpenFile();
+                    byte b;
+                    for (int i = 1; i < rtb.Text.Length; i++)
+                    {
+                        b = (byte)rtb.Text[i];
+                        fs.WriteByte(b);
+                    }
+                    print_log("LOG Saved in " + fs.Name);
+                    fs.Close();
                 }
-                print_log("LOG Saved in "+fs.Name);
-                fs.Close();
             }
         }
 
