@@ -332,11 +332,11 @@
             // 
             // btn_update_port
             // 
-            this.btn_update_port.Location = new System.Drawing.Point(108, 18);
+            this.btn_update_port.Location = new System.Drawing.Point(95, 19);
             this.btn_update_port.Name = "btn_update_port";
-            this.btn_update_port.Size = new System.Drawing.Size(50, 23);
+            this.btn_update_port.Size = new System.Drawing.Size(63, 23);
             this.btn_update_port.TabIndex = 1;
-            this.btn_update_port.Text = "Update";
+            this.btn_update_port.Text = "Refresh";
             this.btn_update_port.UseVisualStyleBackColor = true;
             this.btn_update_port.Click += new System.EventHandler(this.btn_update_port_Click);
             // 
@@ -345,7 +345,7 @@
             this.cb_port.FormattingEnabled = true;
             this.cb_port.Location = new System.Drawing.Point(7, 20);
             this.cb_port.Name = "cb_port";
-            this.cb_port.Size = new System.Drawing.Size(95, 21);
+            this.cb_port.Size = new System.Drawing.Size(82, 21);
             this.cb_port.TabIndex = 0;
             // 
             // menuStrip1
@@ -423,7 +423,10 @@
             // 
             // serial_port
             // 
-            this.serial_port.WriteTimeout = 1000;
+            this.serial_port.ReadBufferSize = 128;
+            this.serial_port.ReadTimeout = 500;
+            this.serial_port.WriteBufferSize = 128;
+            this.serial_port.WriteTimeout = 500;
             this.serial_port.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serial_port_DataReceived);
             // 
             // statusStrip1
@@ -551,6 +554,7 @@
             // 
             // timer1
             // 
+            this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1

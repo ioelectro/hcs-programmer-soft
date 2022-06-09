@@ -39,7 +39,7 @@ namespace Programmer
             {
                 cb_port.Items.Add(str_getPortsName);
             }
-            print_log("Com ports reloaded");
+            print_log("COM Ports Reloaded");
         }
 
         public Form1()
@@ -57,20 +57,9 @@ namespace Programmer
 
         public void get_dev_ver()
         {
-            if (serial_port.IsOpen)
-            {
-                tim1_c = 0;
-                timer1.Start();
-                try
-                {
-                    string TxData = "v0.1";
-                    serial_port.WriteLine(TxData);
-                }
-                catch (Exception err)
-                {
-                    print_log("ERROR! " + err.Message);
-                }
-            }
+
+            tim1_c = 0;
+            timer1.Start();
         }
 
         private void btn_connect_Click(object sender, EventArgs e)
@@ -101,8 +90,10 @@ namespace Programmer
             else
             {
 
-
                 serial_port.Close();
+
+                timer1.Stop();
+                tim1_c = 0;
 
                 btn_connect.Text = "Connect";
 
@@ -309,9 +300,11 @@ namespace Programmer
         {
             int i;
             string ptolog = "WRITE ";
+            byte[] buffer = new byte[2];
+            buffer[0] = (byte)'>';
+            serial_port.Write(buffer, 0, 1);
             for (i = 0; i < 12; i++)
             {
-                byte[] buffer = new byte[2];
                 buffer[0] = (byte)((Data[i] >> 8) & 0xff);
                 buffer[1] = (byte)((Data[i] >> 0) & 0xff);
                 serial_port.Write(buffer, 0, 2);
@@ -374,7 +367,7 @@ namespace Programmer
                 RxData = serial_port.ReadLine();
                 this.Invoke(new EventHandler(print_RxData_to_log));
             }
-            else if(ch=='!')
+            else if(ch=='w')
             {
                 RxData = serial_port.ReadLine();
                 this.Invoke(new EventHandler(print_RxData_to_Warning));
@@ -389,13 +382,12 @@ namespace Programmer
                 RxData = serial_port.ReadLine();
                 this.Invoke(new EventHandler(print_RxData_to_error));
             }
-            else if (ch == 'v')
+            else if (ch == '!')
             {
-                if (timer1.Enabled)
-                {
-                    RxData = serial_port.ReadLine();
-                    this.Invoke(new EventHandler(print_device_version));
-                }
+
+                RxData = serial_port.ReadLine();
+                this.Invoke(new EventHandler(print_device_version));
+
             }
             else serial_port.ReadExisting();
         }
@@ -403,7 +395,20 @@ namespace Programmer
         private void timer1_Tick(object sender, EventArgs e)
         {
             tim1_c++;
-            if(tim1_c>20)
+            if(tim1_c%3==0)
+            {
+                try
+                {
+                    string TxData = "!";
+                    serial_port.WriteLine(TxData);
+                }
+                catch (Exception err)
+                {
+                    print_log("ERROR! " + err.Message);
+                }
+            }
+
+            if(tim1_c>11)
             {
                 tim1_c = 0;
                 timer1.Stop();
