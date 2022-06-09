@@ -16,9 +16,12 @@ namespace Programmer
 {
     public partial class Form1 : Form
     {
+        string RxData;
         bool vbat_sel = true;
         bool ovr_set = true;
         bool bsl_0 = false, bsl_1 = false;
+
+        int tim1_c = 0;
 
         public void print_log(string str)
         {
@@ -50,6 +53,24 @@ namespace Programmer
             update_serial_port_list();
         }
 
+        public void get_dev_ver()
+        {
+            if (serial_port.IsOpen)
+            {
+                tim1_c = 0;
+                timer1.Start();
+                try
+                {
+                    string TxData = "v0.1";
+                    serial_port.WriteLine(TxData);
+                }
+                catch (Exception err)
+                {
+                    print_log("ERROR! " + err.Message);
+                }
+            }
+        }
+
         private void btn_connect_Click(object sender, EventArgs e)
         {
             if (btn_connect.Text == "Connect")
@@ -66,10 +87,11 @@ namespace Programmer
                     btn_connect.Text = "Disconect";
                     print_log("Connected to " + serial_port.PortName);
                     btn_write.Enabled = true;
+
+                    get_dev_ver();
                 }
                 catch (Exception err)
                 {
-                    //MessageBox.Show(err.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     print_log("ERROR! " + err.Message);
                 }
             }
@@ -256,15 +278,90 @@ namespace Programmer
             {
                 try
                 {
-                    serial_port.Write("Test!");
+                    string TxData = "eTest";
+                    serial_port.WriteLine(TxData);
+                    print_log("TX: "+ TxData);
                 }
                 catch (Exception err)
                 {
-                    //MessageBox.Show(err.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     print_log("ERROR! " + err.Message);
                 }
             }
-            else print_log("ERROR! Serial Port Not Open!");
+            else print_log("ERROR! Serial Port not Open");
+        }
+
+        public void print_RxData_to_log(object sender, EventArgs e)
+        {
+            print_log(RxData);
+        }
+
+        public void print_RxData_to_Warning(object sender, EventArgs e)
+        {
+            print_log("WARNING! " + RxData);
+            MessageBox.Show(RxData, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        public void print_RxData_to_error(object sender, EventArgs e)
+        {
+            print_log("ERROR! " + RxData);
+            MessageBox.Show(RxData, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void print_RxData_to_info(object sender, EventArgs e)
+        {
+            print_log("INFO " + RxData);
+            MessageBox.Show(RxData, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public void print_device_version(object sender, EventArgs e)
+        {
+            print_log("DEVICE " + RxData);
+            timer1.Stop();
+        }
+
+        private void serial_port_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            int ch = serial_port.ReadByte();
+            if (ch == '<')
+            {
+                RxData = serial_port.ReadLine();
+                this.Invoke(new EventHandler(print_RxData_to_log));
+            }
+            else if(ch=='!')
+            {
+                RxData = serial_port.ReadLine();
+                this.Invoke(new EventHandler(print_RxData_to_Warning));
+            }
+            else if (ch == 'i')
+            {
+                RxData = serial_port.ReadLine();
+                this.Invoke(new EventHandler(print_RxData_to_info));
+            }
+            else if (ch == 'e')
+            {
+                RxData = serial_port.ReadLine();
+                this.Invoke(new EventHandler(print_RxData_to_error));
+            }
+            else if (ch == 'v')
+            {
+                if (timer1.Enabled)
+                {
+                    RxData = serial_port.ReadLine();
+                    this.Invoke(new EventHandler(print_device_version));
+                }
+            }
+            else serial_port.ReadExisting();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            tim1_c++;
+            if(tim1_c>10)
+            {
+                tim1_c = 0;
+                timer1.Stop();
+                print_log("WARNING! UNKNOWN Device");
+            }
         }
 
         private void cb_br_SelectedIndexChanged(object sender, EventArgs e)

@@ -64,6 +64,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rtb = new System.Windows.Forms.RichTextBox();
             this.btn_write = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -341,6 +342,7 @@
             // 
             this.serial_port.BaudRate = 115200;
             this.serial_port.WriteTimeout = 1000;
+            this.serial_port.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serial_port_DataReceived);
             // 
             // statusStrip1
             // 
@@ -477,6 +479,10 @@
             this.btn_write.UseVisualStyleBackColor = true;
             this.btn_write.Click += new System.EventHandler(this.btn_write_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -546,6 +552,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox cb_timer;
         private System.Windows.Forms.Button btn_write;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
