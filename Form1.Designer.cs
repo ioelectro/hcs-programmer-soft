@@ -111,7 +111,7 @@
             this.groupBox1.Location = new System.Drawing.Point(172, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(415, 202);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Main";
             // 
@@ -122,7 +122,7 @@
             this.btn_auto.Location = new System.Drawing.Point(251, 169);
             this.btn_auto.Name = "btn_auto";
             this.btn_auto.Size = new System.Drawing.Size(75, 23);
-            this.btn_auto.TabIndex = 16;
+            this.btn_auto.TabIndex = 3;
             this.btn_auto.Text = "Auto";
             this.btn_auto.UseVisualStyleBackColor = true;
             this.btn_auto.Click += new System.EventHandler(this.btn_auto_Click);
@@ -134,7 +134,7 @@
             this.btn_write.Location = new System.Drawing.Point(331, 169);
             this.btn_write.Name = "btn_write";
             this.btn_write.Size = new System.Drawing.Size(75, 23);
-            this.btn_write.TabIndex = 15;
+            this.btn_write.TabIndex = 16;
             this.btn_write.Text = "Write";
             this.btn_write.UseVisualStyleBackColor = true;
             this.btn_write.Click += new System.EventHandler(this.btn_write_Click);
@@ -147,7 +147,7 @@
             this.cb_timer.Location = new System.Drawing.Point(193, 52);
             this.cb_timer.Name = "cb_timer";
             this.cb_timer.Size = new System.Drawing.Size(133, 17);
-            this.cb_timer.TabIndex = 14;
+            this.cb_timer.TabIndex = 8;
             this.cb_timer.Text = "ShutOFF Timer Enable";
             this.cb_timer.UseVisualStyleBackColor = true;
             this.cb_timer.CheckedChanged += new System.EventHandler(this.cb_timer_CheckedChanged);
@@ -160,7 +160,7 @@
             this.cb_dis_auto.Location = new System.Drawing.Point(194, 133);
             this.cb_dis_auto.Name = "cb_dis_auto";
             this.cb_dis_auto.Size = new System.Drawing.Size(145, 17);
-            this.cb_dis_auto.TabIndex = 13;
+            this.cb_dis_auto.TabIndex = 12;
             this.cb_dis_auto.Text = "Auto Gen From SER LSB";
             this.cb_dis_auto.UseVisualStyleBackColor = true;
             this.cb_dis_auto.CheckedChanged += new System.EventHandler(this.cb_dis_auto_CheckedChanged);
@@ -172,7 +172,7 @@
             this.tb_dis.MaxLength = 3;
             this.tb_dis.Name = "tb_dis";
             this.tb_dis.Size = new System.Drawing.Size(101, 20);
-            this.tb_dis.TabIndex = 12;
+            this.tb_dis.TabIndex = 13;
             this.tb_dis.Text = "000";
             this.tb_dis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_dis.TextChanged += new System.EventHandler(this.tb_dis_TextChanged);
@@ -206,7 +206,7 @@
             this.tb_seed.MaxLength = 8;
             this.tb_seed.Name = "tb_seed";
             this.tb_seed.Size = new System.Drawing.Size(101, 20);
-            this.tb_seed.TabIndex = 9;
+            this.tb_seed.TabIndex = 11;
             this.tb_seed.Text = "00000000";
             this.tb_seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_seed.TextChanged += new System.EventHandler(this.tb_seed_TextChanged);
@@ -227,7 +227,7 @@
             this.tb_sync.MaxLength = 4;
             this.tb_sync.Name = "tb_sync";
             this.tb_sync.Size = new System.Drawing.Size(101, 20);
-            this.tb_sync.TabIndex = 7;
+            this.tb_sync.TabIndex = 9;
             this.tb_sync.Text = "0000";
             this.tb_sync.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_sync.TextChanged += new System.EventHandler(this.tb_sync_TextChanged);
@@ -248,7 +248,7 @@
             this.btn_gen_ser.Location = new System.Drawing.Point(332, 48);
             this.btn_gen_ser.Name = "btn_gen_ser";
             this.btn_gen_ser.Size = new System.Drawing.Size(75, 23);
-            this.btn_gen_ser.TabIndex = 5;
+            this.btn_gen_ser.TabIndex = 6;
             this.btn_gen_ser.Text = "Generate";
             this.btn_gen_ser.UseVisualStyleBackColor = true;
             this.btn_gen_ser.Click += new System.EventHandler(this.btn_gen_ser_Click);
@@ -259,7 +259,7 @@
             this.tb_ser.MaxLength = 8;
             this.tb_ser.Name = "tb_ser";
             this.tb_ser.Size = new System.Drawing.Size(101, 20);
-            this.tb_ser.TabIndex = 4;
+            this.tb_ser.TabIndex = 7;
             this.tb_ser.Text = "FFFFFFFF";
             this.tb_ser.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_ser.TextChanged += new System.EventHandler(this.tb_ser_TextChanged);
@@ -280,7 +280,7 @@
             this.btn_gen_key.Location = new System.Drawing.Point(332, 22);
             this.btn_gen_key.Name = "btn_gen_key";
             this.btn_gen_key.Size = new System.Drawing.Size(75, 23);
-            this.btn_gen_key.TabIndex = 2;
+            this.btn_gen_key.TabIndex = 4;
             this.btn_gen_key.Text = "Generate";
             this.btn_gen_key.UseVisualStyleBackColor = true;
             this.btn_gen_key.Click += new System.EventHandler(this.btn_gen_Click);
@@ -302,7 +302,7 @@
             this.tb_key.MaxLength = 16;
             this.tb_key.Name = "tb_key";
             this.tb_key.Size = new System.Drawing.Size(236, 20);
-            this.tb_key.TabIndex = 0;
+            this.tb_key.TabIndex = 5;
             this.tb_key.Text = "FFFFFFFFFFFFFFFF";
             this.tb_key.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_key.TextChanged += new System.EventHandler(this.tb_key_TextChanged);
@@ -316,7 +316,7 @@
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(163, 78);
-            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Port";
             // 
@@ -459,7 +459,7 @@
             this.groupBox5.Location = new System.Drawing.Point(3, 154);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(163, 50);
-            this.groupBox5.TabIndex = 12;
+            this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Baud Rate";
             // 
@@ -474,7 +474,7 @@
             this.cb_br.Location = new System.Drawing.Point(6, 20);
             this.cb_br.Name = "cb_br";
             this.cb_br.Size = new System.Drawing.Size(152, 21);
-            this.cb_br.TabIndex = 0;
+            this.cb_br.TabIndex = 15;
             this.cb_br.SelectedIndexChanged += new System.EventHandler(this.cb_br_SelectedIndexChanged);
             // 
             // groupBox4
@@ -484,7 +484,7 @@
             this.groupBox4.Location = new System.Drawing.Point(3, 85);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(163, 63);
-            this.groupBox4.TabIndex = 11;
+            this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "VDD";
             // 
@@ -494,7 +494,7 @@
             this.rb_6v.Location = new System.Drawing.Point(7, 39);
             this.rb_6v.Name = "rb_6v";
             this.rb_6v.Size = new System.Drawing.Size(41, 17);
-            this.rb_6v.TabIndex = 1;
+            this.rb_6v.TabIndex = 14;
             this.rb_6v.Text = "6 V";
             this.rb_6v.UseVisualStyleBackColor = true;
             this.rb_6v.CheckedChanged += new System.EventHandler(this.rb_6v_CheckedChanged);
@@ -506,7 +506,7 @@
             this.rb_9or12v.Location = new System.Drawing.Point(7, 18);
             this.rb_9or12v.Name = "rb_9or12v";
             this.rb_9or12v.Size = new System.Drawing.Size(65, 17);
-            this.rb_9or12v.TabIndex = 0;
+            this.rb_9or12v.TabIndex = 14;
             this.rb_9or12v.TabStop = true;
             this.rb_9or12v.Text = "9 or12 V";
             this.rb_9or12v.UseVisualStyleBackColor = true;
@@ -533,7 +533,7 @@
             this.rtb.Location = new System.Drawing.Point(6, 14);
             this.rtb.Name = "rtb";
             this.rtb.Size = new System.Drawing.Size(572, 88);
-            this.rtb.TabIndex = 2;
+            this.rtb.TabIndex = 17;
             this.rtb.Text = "";
             // 
             // timer1
