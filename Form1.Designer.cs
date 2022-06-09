@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_auto = new System.Windows.Forms.Button();
+            this.btn_write = new System.Windows.Forms.Button();
             this.cb_timer = new System.Windows.Forms.CheckBox();
             this.cb_dis_auto = new System.Windows.Forms.CheckBox();
             this.tb_dis = new System.Windows.Forms.TextBox();
@@ -52,6 +54,10 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportProblemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serial_port = new System.IO.Ports.SerialPort(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -63,8 +69,9 @@
             this.rb_9or12v = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rtb = new System.Windows.Forms.RichTextBox();
-            this.btn_write = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.saveLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -83,6 +90,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btn_auto);
             this.groupBox1.Controls.Add(this.btn_write);
             this.groupBox1.Controls.Add(this.cb_timer);
             this.groupBox1.Controls.Add(this.cb_dis_auto);
@@ -105,6 +113,30 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Main";
+            // 
+            // btn_auto
+            // 
+            this.btn_auto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_auto.Enabled = false;
+            this.btn_auto.Location = new System.Drawing.Point(251, 169);
+            this.btn_auto.Name = "btn_auto";
+            this.btn_auto.Size = new System.Drawing.Size(75, 23);
+            this.btn_auto.TabIndex = 16;
+            this.btn_auto.Text = "Auto";
+            this.btn_auto.UseVisualStyleBackColor = true;
+            this.btn_auto.Click += new System.EventHandler(this.btn_auto_Click);
+            // 
+            // btn_write
+            // 
+            this.btn_write.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_write.Enabled = false;
+            this.btn_write.Location = new System.Drawing.Point(331, 169);
+            this.btn_write.Name = "btn_write";
+            this.btn_write.Size = new System.Drawing.Size(75, 23);
+            this.btn_write.TabIndex = 15;
+            this.btn_write.Text = "Write";
+            this.btn_write.UseVisualStyleBackColor = true;
+            this.btn_write.Click += new System.EventHandler(this.btn_write_Click);
             // 
             // cb_timer
             // 
@@ -328,15 +360,51 @@
             // 
             // fileToolStripMenuItem
             // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saveLogToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // helpToolStripMenuItem
             // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reportProblemToolStripMenuItem,
+            this.updateToolStripMenuItem,
+            this.contaToolStripMenuItem,
+            this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // reportProblemToolStripMenuItem
+            // 
+            this.reportProblemToolStripMenuItem.Name = "reportProblemToolStripMenuItem";
+            this.reportProblemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reportProblemToolStripMenuItem.Text = "Report Problem";
+            this.reportProblemToolStripMenuItem.Click += new System.EventHandler(this.reportProblemToolStripMenuItem_Click);
+            // 
+            // updateToolStripMenuItem
+            // 
+            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateToolStripMenuItem.Text = "Update";
+            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
+            // 
+            // contaToolStripMenuItem
+            // 
+            this.contaToolStripMenuItem.Name = "contaToolStripMenuItem";
+            this.contaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.contaToolStripMenuItem.Text = "Contact";
+            this.contaToolStripMenuItem.Click += new System.EventHandler(this.contaToolStripMenuItem_Click);
             // 
             // serial_port
             // 
@@ -467,21 +535,23 @@
             this.rtb.TabIndex = 2;
             this.rtb.Text = "";
             // 
-            // btn_write
-            // 
-            this.btn_write.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_write.Enabled = false;
-            this.btn_write.Location = new System.Drawing.Point(331, 169);
-            this.btn_write.Name = "btn_write";
-            this.btn_write.Size = new System.Drawing.Size(75, 23);
-            this.btn_write.TabIndex = 15;
-            this.btn_write.Text = "Write";
-            this.btn_write.UseVisualStyleBackColor = true;
-            this.btn_write.Click += new System.EventHandler(this.btn_write_Click);
-            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // saveLogToolStripMenuItem
+            // 
+            this.saveLogToolStripMenuItem.Name = "saveLogToolStripMenuItem";
+            this.saveLogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveLogToolStripMenuItem.Text = "Save Log";
+            this.saveLogToolStripMenuItem.Click += new System.EventHandler(this.saveLogToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -494,7 +564,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(606, 418);
             this.Name = "Form1";
-            this.Text = "HSC Proggramer";
+            this.Text = "HSC Proggramer V0.1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -553,6 +623,13 @@
         private System.Windows.Forms.CheckBox cb_timer;
         private System.Windows.Forms.Button btn_write;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button btn_auto;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportProblemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem contaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveLogToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
     }
 }
 

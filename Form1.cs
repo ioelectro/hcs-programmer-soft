@@ -88,6 +88,7 @@ namespace Programmer
                     btn_connect.Text = "Disconect";
                     print_log("Connected to " + serial_port.PortName);
                     btn_write.Enabled = true;
+                    btn_auto.Enabled = true;
 
                     get_dev_ver();
                 }
@@ -108,6 +109,7 @@ namespace Programmer
                 btn_update_port.Enabled = true;
                 print_log("Disconected");
                 btn_write.Enabled = false;
+                btn_auto.Enabled = false;
             }
         }
 
@@ -405,6 +407,79 @@ namespace Programmer
                 tim1_c = 0;
                 timer1.Stop();
                 print_log("WARNING! UNKNOWN Device");
+            }
+        }
+
+        private void btn_auto_Click(object sender, EventArgs e)
+        {
+            if (serial_port.IsOpen)
+            {
+                try
+                {
+                    tb_key.Text = GetRandomHexNumber(16);
+                    print_log("KEY Generated " + tb_key.Text);
+
+                    tb_ser.Text = GetRandomHexNumber(8);
+                    check_msb_ser();
+
+                    print_log("SER Generated " + tb_ser.Text);
+
+                    decode_data();
+                    write_data();
+                }
+                catch (Exception err)
+                {
+                    print_log("ERROR! " + err.Message);
+                }
+            }
+            else print_log("ERROR! Serial Port not Open");
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://ioelectro.ir");
+        }
+
+        private void contaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://ioelectro.ir/contacts");
+        }
+
+        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/ioelectro/hcs-programmer-soft/releases");
+        }
+
+        private void reportProblemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/ioelectro/hcs-programmer-soft/issues");
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void saveLogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog1.Title = "Save an text File";
+            saveFileDialog1.ShowDialog();
+
+            // If the file name is not an empty string open it for saving.
+            if (saveFileDialog1.FileName != "")
+            {
+                // Saves the Image via a FileStream created by the OpenFile method.
+                System.IO.FileStream fs =
+                    (System.IO.FileStream)saveFileDialog1.OpenFile();
+                byte b;
+                for(int i=0;i<rtb.Text.Length;i++)
+                {
+                    b = (byte)rtb.Text[i];
+                    fs.WriteByte(b);
+                }
+                fs.Close();
             }
         }
 
