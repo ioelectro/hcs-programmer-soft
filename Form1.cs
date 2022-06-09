@@ -267,10 +267,54 @@ namespace Programmer
 
         private void tb_seed_TextChanged(object sender, EventArgs e)
         {
-            if(tb_seed.Text.Length==4)
+            if(tb_seed.Text.Length==8)
             {
                 tb_seed.Text = tb_seed.Text.ToUpper();
             }
+        }
+
+        public void decode_data()
+        {
+            Int64 key = Int64.Parse(tb_key.Text, System.Globalization.NumberStyles.HexNumber);
+            Int32 ser = Int32.Parse(tb_ser.Text, System.Globalization.NumberStyles.HexNumber);
+            int seed = int.Parse(tb_seed.Text, System.Globalization.NumberStyles.HexNumber);
+            int sync = int.Parse(tb_sync.Text, System.Globalization.NumberStyles.HexNumber);
+            int dis = int.Parse(tb_dis.Text, System.Globalization.NumberStyles.HexNumber);
+
+
+            Data[0] = (int)((key >> (16 * 0)) & 0xffff);
+            Data[1] = (int)((key >> (16 * 1)) & 0xffff);
+            Data[2] = (int)((key >> (16 * 2)) & 0xffff);
+            Data[3] = (int)((key >> (16 * 3)) & 0xffff);
+
+            Data[4] = sync;
+
+            Data[5] = 0;
+
+            Data[6] = (int)((ser >> (16 * 0)) & 0xffff);
+            Data[7] = (int)((ser >> (16 * 1)) & 0xffff);
+
+            Data[8] = (int)((seed >> (16 * 0)) & 0xffff);
+            Data[9] = (int)((seed >> (16 * 1)) & 0xffff);
+
+            Data[10] = 0;
+
+            Data[11] = ((bsl_1 ? 1 : 0) << 14) | ((bsl_0 ? 1 : 0) << 13) | ((vbat_sel ? 1 : 0) << 12) | ((ovr_set ? 1 : 0) << 11) | ((ovr_set ? 1 : 0) << 10) | dis;
+        }
+
+        public void write_data()
+        {
+            int i;
+            string ptolog = "WRITE ";
+            for (i = 0; i < 12; i++)
+            {
+                byte[] buffer = new byte[2];
+                buffer[0] = (byte)((Data[i] >> 8) & 0xff);
+                buffer[1] = (byte)((Data[i] >> 0) & 0xff);
+                serial_port.Write(buffer, 0, 2);
+                ptolog += string.Format("{0,2:X2}{1,2:X2} ", buffer[0], buffer[1]);
+            }
+            print_log(ptolog);
         }
 
         private void btn_write_Click(object sender, EventArgs e)
@@ -279,38 +323,8 @@ namespace Programmer
             {
                 try
                 {
-                    Int64 key= Int64.Parse(tb_key.Text, System.Globalization.NumberStyles.HexNumber);
-                    Int32 ser = Int32.Parse(tb_ser.Text, System.Globalization.NumberStyles.HexNumber);
-                    int seed=int.Parse(tb_seed.Text, System.Globalization.NumberStyles.HexNumber);
-                    int sync = int.Parse(tb_sync.Text, System.Globalization.NumberStyles.HexNumber);
-                    int dis = int.Parse(tb_dis.Text, System.Globalization.NumberStyles.HexNumber);
-
-
-                    Data[0] = (int)((key >> (16 * 0)) & 0xffff);
-                    Data[1] = (int)((key >> (16 * 1)) & 0xffff);
-                    Data[2] = (int)((key >> (16 * 2)) & 0xffff);
-                    Data[3] = (int)((key >> (16 * 3)) & 0xffff);
-
-                    Data[4] = sync;
-
-                    Data[5] = 0;
-
-                    Data[6] = (int)((ser >> (16 * 0)) & 0xffff);
-                    Data[7] = (int)((ser >> (16 * 1)) & 0xffff);
-
-                    Data[8] = (int)((seed >> (16 * 0)) & 0xffff);
-                    Data[9] = (int)((seed >> (16 * 1)) & 0xffff);
-
-                    Data[10] = 0;
-
-                    Data[11] = ((bsl_1 ? 1 : 0) << 14) | ((bsl_0 ? 1 : 0) << 13) | ((vbat_sel ? 1 : 0) << 12) | ((ovr_set ? 1 : 0) << 11) | ((ovr_set ? 1 : 0) << 10) | dis;
-
-
-
-
-
-                    serial_port.WriteLine(TxData);
-                    print_log("TX: "+ TxData);
+                    decode_data();
+                    write_data();
                 }
                 catch (Exception err)
                 {

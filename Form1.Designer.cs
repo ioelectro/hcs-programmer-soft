@@ -170,11 +170,11 @@
             // tb_seed
             // 
             this.tb_seed.Location = new System.Drawing.Point(82, 103);
-            this.tb_seed.MaxLength = 4;
+            this.tb_seed.MaxLength = 8;
             this.tb_seed.Name = "tb_seed";
             this.tb_seed.Size = new System.Drawing.Size(101, 20);
             this.tb_seed.TabIndex = 9;
-            this.tb_seed.Text = "0000";
+            this.tb_seed.Text = "00000000";
             this.tb_seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_seed.TextChanged += new System.EventHandler(this.tb_seed_TextChanged);
             this.tb_seed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_seed_KeyPress);
