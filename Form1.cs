@@ -443,7 +443,7 @@ namespace Programmer
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://ioelectro.ir");
+            System.Diagnostics.Process.Start("https://github.com/ioelectro/hcs-programmer-soft");
         }
 
         private void contaToolStripMenuItem_Click(object sender, EventArgs e)
