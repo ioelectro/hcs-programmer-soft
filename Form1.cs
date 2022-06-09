@@ -465,6 +465,9 @@ namespace Programmer
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
             saveFileDialog1.Title = "Save an text File";
+
+            saveFileDialog1.FileName= DateTime.Now.ToString("yyyyMMddHHmmss");
+
             saveFileDialog1.ShowDialog();
 
             // If the file name is not an empty string open it for saving.
@@ -479,6 +482,7 @@ namespace Programmer
                     b = (byte)rtb.Text[i];
                     fs.WriteByte(b);
                 }
+                print_log("LOG Saved in "+fs.Name);
                 fs.Close();
             }
         }
