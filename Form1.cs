@@ -470,23 +470,25 @@ namespace Programmer
 
             saveFileDialog1.FileName = DateTime.Now.ToString("yyyyMMddHHmmss");
 
-            saveFileDialog1.ShowDialog();
-
-            // If the file name is not an empty string open it for saving.
-            if (saveFileDialog1.FileName != "")
+            if(saveFileDialog1.ShowDialog()== DialogResult.OK)
             {
-                // Saves the Image via a FileStream created by the OpenFile method.
-                System.IO.FileStream fs =
-                    (System.IO.FileStream)saveFileDialog1.OpenFile();
-                byte b;
-                for (int i = 0; i < rtb.Text.Length; i++)
+                // If the file name is not an empty string open it for saving.
+                if (saveFileDialog1.FileName != "")
                 {
-                    b = (byte)rtb.Text[i];
-                    fs.WriteByte(b);
+                    // Saves the Image via a FileStream created by the OpenFile method.
+                    System.IO.FileStream fs =
+                        (System.IO.FileStream)saveFileDialog1.OpenFile();
+                    byte b;
+                    for (int i = 0; i < rtb.Text.Length; i++)
+                    {
+                        b = (byte)rtb.Text[i];
+                        fs.WriteByte(b);
+                    }
+                    print_log("LOG Saved in " + fs.Name);
+                    fs.Close();
                 }
-                print_log("LOG Saved in " + fs.Name);
-                fs.Close();
             }
+
         }
 
         private void cb_br_SelectedIndexChanged(object sender, EventArgs e)
