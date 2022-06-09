@@ -423,10 +423,10 @@
             // 
             // serial_port
             // 
-            this.serial_port.ReadBufferSize = 128;
-            this.serial_port.ReadTimeout = 500;
-            this.serial_port.WriteBufferSize = 128;
-            this.serial_port.WriteTimeout = 500;
+            this.serial_port.ReadBufferSize = 256;
+            this.serial_port.ReadTimeout = 1000;
+            this.serial_port.WriteBufferSize = 256;
+            this.serial_port.WriteTimeout = 1000;
             this.serial_port.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serial_port_DataReceived);
             // 
             // statusStrip1
