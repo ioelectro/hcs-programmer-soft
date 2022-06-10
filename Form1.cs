@@ -299,7 +299,7 @@ namespace Programmer
         public void write_data()
         {
             int i;
-            string ptolog = "WRITE  ";
+            string ptolog = "WRITE ";
             byte[] buffer = new byte[2];
             buffer[0] = (byte)'>';
             serial_port.Write(buffer, 0, 1);
