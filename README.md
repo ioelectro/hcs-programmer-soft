@@ -10,7 +10,7 @@ An open API application for programming HCS301 EEPROM Code Hopping.
 *Required .NET Framework 4.7.2 or Upper.*
 
 ## Description
-This software requires an interface hardware that can write information to the IC.The information is sent to the interface IC via the com port using a usb to serial converter.
+This software requires an interface hardware that can write information to the HCS.The information is sent to the interface via the com port using a usb to serial converter.
 
 ### Protocol
 `UART`,`8 Data`,`1 StopBit`,`No Parity`,`BaudRate 9600`
