@@ -483,12 +483,12 @@ namespace Programmer
                     // Saves the Image via a FileStream created by the OpenFile method.
                     System.IO.FileStream fs =
                         (System.IO.FileStream)saveFileDialog1.OpenFile();
-                    byte b;
+
                     for (int i = 0; i < rtb.Text.Length; i++)
                     {
-                        b = (byte)rtb.Text[i];
-                        fs.WriteByte(b);
+                        fs.WriteByte((byte)rtb.Text[i]);
                     }
+
                     print_log("LOG Saved in " + fs.Name);
                     fs.Close();
                 }
