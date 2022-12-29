@@ -396,28 +396,28 @@
             // reportProblemToolStripMenuItem
             // 
             this.reportProblemToolStripMenuItem.Name = "reportProblemToolStripMenuItem";
-            this.reportProblemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reportProblemToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.reportProblemToolStripMenuItem.Text = "Report Problem";
             this.reportProblemToolStripMenuItem.Click += new System.EventHandler(this.reportProblemToolStripMenuItem_Click);
             // 
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.updateToolStripMenuItem.Text = "Update";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
             // contaToolStripMenuItem
             // 
             this.contaToolStripMenuItem.Name = "contaToolStripMenuItem";
-            this.contaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.contaToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.contaToolStripMenuItem.Text = "Contact";
             this.contaToolStripMenuItem.Click += new System.EventHandler(this.contaToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -569,7 +569,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(606, 418);
             this.Name = "Form1";
-            this.Text = "HCS301 Programmer V0.1";
+            this.Text = "HCS301 Programmer V0.2";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
