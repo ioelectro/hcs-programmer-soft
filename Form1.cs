@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ HCS Programmer Soft
+ By Liyanboy74
+ https://github.com/liyanboy74
+*/
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
