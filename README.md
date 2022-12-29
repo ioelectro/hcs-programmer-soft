@@ -1,8 +1,7 @@
 # HCS Programmer Software
-An open API application for programming HCS301 EEPROM Code Hopping.
+An open source application for programming HCS301 EEPROM Code Hopping.
 
-
-![HCS301 Programmer Software](https://user-images.githubusercontent.com/64005694/172905165-ddc48f12-c173-4eb3-8305-408ea8ab3ba6.jpg)
+![HCS301 Programmer Software](https://user-images.githubusercontent.com/64005694/209923393-3a4efdea-065d-4f8e-99b4-e55fbddbc350.jpg)
 
 ## Download
 **[Download latest release](https://github.com/ioelectro/hcs-programmer-soft/releases)**
