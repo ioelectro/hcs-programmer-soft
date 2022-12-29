@@ -27,8 +27,9 @@ namespace Programmer
         public void print_log(string str)
         {
             string time = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            if(rtb.Text.Length==0) rtb.Text=time + " " + str;
-            else rtb.AppendText("\r" + time + " " + str);
+            str.Replace('\r', '\0');
+            str.Replace('\n', '\0');
+            rtb.AppendText(time + " " + str+ "\n");
             rtb.ScrollToCaret();
         }
 
