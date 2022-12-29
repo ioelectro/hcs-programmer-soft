@@ -11,6 +11,11 @@ An open source application for programming HCS301 EEPROM Code Hopping.
 ## Description
 This software requires an interface hardware that can write information to the HCS.The information is sent to the interface via the com port using a usb to serial converter.
 
+### Hardware
+Any hardware that supports UART serial communication can be used as an interface and hardware. For example, ARDUINO PIC AVR STM8 are a good choice.
+
+- [Arduino HCS Programmer](https://github.com/ioelectro/arduino-hcs-programmer)
+
 ### Protocol
 `UART`,`8 Data`,`1 StopBit`,`No Parity`,`BaudRate 9600`
 
@@ -48,11 +53,6 @@ Print data to log:<br>
 Show Warning message:<br>
 `w` `Warning!` `\n`<br>
 
-### Hardware
-Any hardware that supports UART serial communication can be used as an interface and hardware. For example, ARDUINO PIC AVR STM8 are a good choice.
-
-
-If you have a open hardware project for this software, please let me know so I can share it.
 
 
 
