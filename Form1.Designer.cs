@@ -574,7 +574,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(606, 418);
             this.Name = "Form1";
-            this.Text = "HCS301 Programmer V0.2";
+            this.Text = "HCS301 Programmer V0.3";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

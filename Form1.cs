@@ -175,6 +175,7 @@ namespace Programmer
                     int sser = int.Parse(tb_ser.Text, System.Globalization.NumberStyles.HexNumber);
                     sser = sser & 0x3ff;
                     tb_dis.Text = Convert.ToString(sser, 16).ToUpper();
+                    if (tb_dis.TextLength <= 2) tb_dis.Text = '0' + tb_dis.Text.ToString();
                 }
             }
         }
