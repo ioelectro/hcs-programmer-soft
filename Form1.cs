@@ -27,6 +27,7 @@ namespace Programmer
         bool ovr_set = true;
         bool bsl_0 = false, bsl_1 = false;
         bool ser_pp = false;
+        int dc = 10;
 
         int tim1_c = 0;
         int[] Data = new int[12];
@@ -178,9 +179,17 @@ namespace Programmer
                 if (cb_dis_auto.Checked)
                 {
                     int sser = int.Parse(tb_ser.Text, System.Globalization.NumberStyles.HexNumber);
-                    sser = sser & 0x3ff;
-                    tb_dis.Text = Convert.ToString(sser, 16).ToUpper();
-                    if (tb_dis.TextLength <= 2) tb_dis.Text = '0' + tb_dis.Text.ToString();
+                    if(dc==10)
+                    {
+                        sser = sser & 0x3ff;
+                        tb_dis.Text = sser.ToString("X").PadLeft(3, '0');
+                    }
+                    else if(dc==8)
+                    {
+                        sser = sser & 0xff;
+                        tb_dis.Text = sser.ToString("X").PadLeft(2, '0');
+                    }
+                    
                 }
             }
         }
@@ -632,6 +641,22 @@ namespace Programmer
                 sERToolStripMenuItem.Checked = false;
                 ser_pp = false;
             }
+        }
+
+        private void bitToolStripMenuItem1_Click(object sender, EventArgs e) // 10 Bit
+        {
+            dc = 10;
+            bitToolStripMenuItem1.Checked = true;
+            bitToolStripMenuItem.Checked = false;
+            if (cb_dis_auto.Checked) check_msb_ser();
+        }
+
+        private void bitToolStripMenuItem_Click(object sender, EventArgs e) //8 Bit
+        {
+            dc = 8;
+            bitToolStripMenuItem1.Checked = false;
+            bitToolStripMenuItem.Checked = true;
+            if (cb_dis_auto.Checked) check_msb_ser();
         }
 
         private void cb_br_SelectedIndexChanged(object sender, EventArgs e)
