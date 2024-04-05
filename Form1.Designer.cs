@@ -73,6 +73,8 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rtb = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sERToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -357,6 +359,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.optionsToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -401,28 +404,28 @@
             // reportProblemToolStripMenuItem
             // 
             this.reportProblemToolStripMenuItem.Name = "reportProblemToolStripMenuItem";
-            this.reportProblemToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.reportProblemToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.reportProblemToolStripMenuItem.Text = "Report Problem";
             this.reportProblemToolStripMenuItem.Click += new System.EventHandler(this.reportProblemToolStripMenuItem_Click);
             // 
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.updateToolStripMenuItem.Text = "Update";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
             // contaToolStripMenuItem
             // 
             this.contaToolStripMenuItem.Name = "contaToolStripMenuItem";
-            this.contaToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.contaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.contaToolStripMenuItem.Text = "Contact";
             this.contaToolStripMenuItem.Click += new System.EventHandler(this.contaToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -562,6 +565,21 @@
             this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sERToolStripMenuItem});
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.optionsToolStripMenuItem.Text = "Options";
+            // 
+            // sERToolStripMenuItem
+            // 
+            this.sERToolStripMenuItem.Name = "sERToolStripMenuItem";
+            this.sERToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sERToolStripMenuItem.Text = "SER++";
+            this.sERToolStripMenuItem.Click += new System.EventHandler(this.sERToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -640,6 +658,8 @@
         private System.Windows.Forms.ToolStripMenuItem contaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveLogToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sERToolStripMenuItem;
     }
 }
 

@@ -26,6 +26,7 @@ namespace Programmer
         bool vbat_sel = true;
         bool ovr_set = true;
         bool bsl_0 = false, bsl_1 = false;
+        bool ser_pp = false;
 
         int tim1_c = 0;
         int[] Data = new int[12];
@@ -159,7 +160,11 @@ namespace Programmer
         {
             if (tb_ser.Text.Length == 8)
             {
-                int nser = 0, ser = int.Parse(tb_ser.Text, System.Globalization.NumberStyles.HexNumber);
+                int nser = 0;
+                int ser = 0;
+
+                ser = int.Parse(tb_ser.Text, System.Globalization.NumberStyles.HexNumber);
+
                 if (cb_timer.Checked)
                 {
                     nser = (int)(ser | 0x80000000);
@@ -168,7 +173,7 @@ namespace Programmer
                 {
                     nser = (int)(ser & 0x7fffffff);
                 }
-                tb_ser.Text = Convert.ToString(nser, 16).ToUpper();
+                tb_ser.Text = nser.ToString("X").PadLeft(8, '0');
 
                 if (cb_dis_auto.Checked)
                 {
@@ -338,9 +343,25 @@ namespace Programmer
             else print_log("ERROR! Serial Port not Open");
         }
 
+        public void ser_pp_check()
+        {
+            int ser = int.Parse(tb_ser.Text, System.Globalization.NumberStyles.HexNumber);
+            ser++;
+            if (ser >= 0xffffffff) ser = 0;
+            tb_ser.Text = ser.ToString("X").PadLeft(8,'0');
+            check_msb_ser();
+        }
+
         public void print_RxData_to_log(object sender, EventArgs e)
         {
             print_log(RxData);
+            if (ser_pp)
+            {
+                if (RxData.Contains("Done"))
+                {
+                    ser_pp_check();
+                }
+            }
         }
 
         public void print_RxData_to_Warning(object sender, EventArgs e)
@@ -596,6 +617,20 @@ namespace Programmer
             {
                 tb_dis.Paste();
                 e.SuppressKeyPress = true;
+            }
+        }
+
+        private void sERToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sERToolStripMenuItem.Checked == false)
+            {
+                sERToolStripMenuItem.Checked = true;
+                ser_pp = true;
+            }
+            else
+            {
+                sERToolStripMenuItem.Checked = false;
+                ser_pp = false;
             }
         }
 
