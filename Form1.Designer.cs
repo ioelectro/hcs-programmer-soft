@@ -406,7 +406,7 @@
             // 
             this.sERToolStripMenuItem.Name = "sERToolStripMenuItem";
             this.sERToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.sERToolStripMenuItem.Text = "SER++";
+            this.sERToolStripMenuItem.Text = "SER++ if Done!";
             this.sERToolStripMenuItem.Click += new System.EventHandler(this.sERToolStripMenuItem_Click);
             // 
             // discriminationToolStripMenuItem
