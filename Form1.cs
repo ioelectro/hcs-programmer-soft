@@ -515,6 +515,11 @@ namespace Programmer
                 tb_key.SelectAll();
                 e.SuppressKeyPress = true;
             }
+            else if (e.Control && e.KeyCode == Keys.V)
+            {
+                tb_key.Paste();
+                e.SuppressKeyPress = true;
+            }
         }
 
         private void tb_ser_KeyDown(object sender, KeyEventArgs e)
@@ -527,6 +532,11 @@ namespace Programmer
             else if (e.Control && e.KeyCode == Keys.A)
             {
                 tb_ser.SelectAll();
+                e.SuppressKeyPress = true;
+            }
+            else if (e.Control && e.KeyCode == Keys.V)
+            {
+                tb_ser.Paste();
                 e.SuppressKeyPress = true;
             }
         }
@@ -543,6 +553,11 @@ namespace Programmer
                 tb_sync.SelectAll();
                 e.SuppressKeyPress = true;
             }
+            else if (e.Control && e.KeyCode == Keys.V)
+            {
+                tb_sync.Paste();
+                e.SuppressKeyPress = true;
+            }
         }
 
         private void tb_seed_KeyDown(object sender, KeyEventArgs e)
@@ -557,6 +572,11 @@ namespace Programmer
                 tb_seed.SelectAll();
                 e.SuppressKeyPress = true;
             }
+            else if (e.Control && e.KeyCode == Keys.V)
+            {
+                tb_seed.Paste();
+                e.SuppressKeyPress = true;
+            }
         }
 
         private void tb_dis_KeyDown(object sender, KeyEventArgs e)
@@ -569,6 +589,11 @@ namespace Programmer
             else if (e.Control && e.KeyCode == Keys.A)
             {
                 tb_dis.SelectAll();
+                e.SuppressKeyPress = true;
+            }
+            else if (e.Control && e.KeyCode == Keys.V)
+            {
+                tb_dis.Paste();
                 e.SuppressKeyPress = true;
             }
         }
