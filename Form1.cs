@@ -503,6 +503,76 @@ namespace Programmer
 
         }
 
+        private void tb_key_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                tb_key.Copy();
+                e.SuppressKeyPress = true;
+            }
+            else if(e.Control&&e.KeyCode==Keys.A)
+            {
+                tb_key.SelectAll();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void tb_ser_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                tb_ser.Copy();
+                e.SuppressKeyPress = true;
+            }
+            else if (e.Control && e.KeyCode == Keys.A)
+            {
+                tb_ser.SelectAll();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void tb_sync_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                tb_sync.Copy();
+                e.SuppressKeyPress = true;
+            }
+            else if (e.Control && e.KeyCode == Keys.A)
+            {
+                tb_sync.SelectAll();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void tb_seed_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                tb_seed.Copy();
+                e.SuppressKeyPress = true;
+            }
+            else if (e.Control && e.KeyCode == Keys.A)
+            {
+                tb_seed.SelectAll();
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void tb_dis_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                tb_dis.Copy();
+                e.SuppressKeyPress = true;
+            }
+            else if (e.Control && e.KeyCode == Keys.A)
+            {
+                tb_dis.SelectAll();
+                e.SuppressKeyPress = true;
+            }
+        }
+
         private void cb_br_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch(cb_br.SelectedIndex)

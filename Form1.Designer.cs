@@ -176,6 +176,7 @@
             this.tb_dis.Text = "000";
             this.tb_dis.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_dis.TextChanged += new System.EventHandler(this.tb_dis_TextChanged);
+            this.tb_dis.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_dis_KeyDown);
             this.tb_dis.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_dis_KeyPress);
             // 
             // label5
@@ -210,6 +211,7 @@
             this.tb_seed.Text = "00000000";
             this.tb_seed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_seed.TextChanged += new System.EventHandler(this.tb_seed_TextChanged);
+            this.tb_seed.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_seed_KeyDown);
             this.tb_seed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_seed_KeyPress);
             // 
             // label4
@@ -231,6 +233,7 @@
             this.tb_sync.Text = "0000";
             this.tb_sync.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_sync.TextChanged += new System.EventHandler(this.tb_sync_TextChanged);
+            this.tb_sync.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_sync_KeyDown);
             this.tb_sync.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_sync_KeyPress);
             // 
             // label3
@@ -263,6 +266,7 @@
             this.tb_ser.Text = "FFFFFFFF";
             this.tb_ser.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_ser.TextChanged += new System.EventHandler(this.tb_ser_TextChanged);
+            this.tb_ser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_ser_KeyDown);
             this.tb_ser.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_ser_KeyPress);
             // 
             // label2
@@ -306,6 +310,7 @@
             this.tb_key.Text = "FFFFFFFFFFFFFFFF";
             this.tb_key.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_key.TextChanged += new System.EventHandler(this.tb_key_TextChanged);
+            this.tb_key.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_key_KeyDown);
             this.tb_key.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_key_KeyPress);
             // 
             // groupBox2
