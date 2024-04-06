@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cb_alg_sel = new System.Windows.Forms.ComboBox();
+            this.btn_mc_clc = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tb_mf = new System.Windows.Forms.TextBox();
             this.btn_auto = new System.Windows.Forms.Button();
             this.btn_write = new System.Windows.Forms.Button();
             this.cb_timer = new System.Windows.Forms.CheckBox();
@@ -61,6 +65,10 @@
             this.discriminationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.learnModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.simpleLearningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.normalLearningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.secureLearnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportProblemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,6 +86,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rtb = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btn_pp = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -96,6 +105,11 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btn_pp);
+            this.groupBox1.Controls.Add(this.cb_alg_sel);
+            this.groupBox1.Controls.Add(this.btn_mc_clc);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.tb_mf);
             this.groupBox1.Controls.Add(this.btn_auto);
             this.groupBox1.Controls.Add(this.btn_write);
             this.groupBox1.Controls.Add(this.cb_timer);
@@ -115,16 +129,66 @@
             this.groupBox1.Controls.Add(this.tb_key);
             this.groupBox1.Location = new System.Drawing.Point(172, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(415, 202);
+            this.groupBox1.Size = new System.Drawing.Size(474, 218);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Main";
+            // 
+            // cb_alg_sel
+            // 
+            this.cb_alg_sel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cb_alg_sel.Enabled = false;
+            this.cb_alg_sel.FormattingEnabled = true;
+            this.cb_alg_sel.Items.AddRange(new object[] {
+            "Same",
+            "FNV-1a"});
+            this.cb_alg_sel.Location = new System.Drawing.Point(310, 30);
+            this.cb_alg_sel.Name = "cb_alg_sel";
+            this.cb_alg_sel.Size = new System.Drawing.Size(74, 21);
+            this.cb_alg_sel.TabIndex = 21;
+            // 
+            // btn_mc_clc
+            // 
+            this.btn_mc_clc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_mc_clc.Enabled = false;
+            this.btn_mc_clc.Location = new System.Drawing.Point(390, 29);
+            this.btn_mc_clc.Name = "btn_mc_clc";
+            this.btn_mc_clc.Size = new System.Drawing.Size(75, 23);
+            this.btn_mc_clc.TabIndex = 20;
+            this.btn_mc_clc.Text = "Generate";
+            this.btn_mc_clc.UseVisualStyleBackColor = true;
+            this.btn_mc_clc.Click += new System.EventHandler(this.btn_mc_clc_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(7, 34);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(101, 13);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Manufacturer Code:";
+            // 
+            // tb_mf
+            // 
+            this.tb_mf.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tb_mf.Enabled = false;
+            this.tb_mf.Location = new System.Drawing.Point(107, 30);
+            this.tb_mf.MaxLength = 16;
+            this.tb_mf.Name = "tb_mf";
+            this.tb_mf.Size = new System.Drawing.Size(197, 20);
+            this.tb_mf.TabIndex = 19;
+            this.tb_mf.Text = "0000000000000000";
+            this.tb_mf.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_mf.TextChanged += new System.EventHandler(this.tb_mf_TextChanged);
+            this.tb_mf.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_mf_KeyDown);
+            this.tb_mf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_mf_KeyPress);
             // 
             // btn_auto
             // 
             this.btn_auto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_auto.Enabled = false;
-            this.btn_auto.Location = new System.Drawing.Point(251, 169);
+            this.btn_auto.Location = new System.Drawing.Point(310, 185);
             this.btn_auto.Name = "btn_auto";
             this.btn_auto.Size = new System.Drawing.Size(75, 23);
             this.btn_auto.TabIndex = 3;
@@ -136,7 +200,7 @@
             // 
             this.btn_write.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_write.Enabled = false;
-            this.btn_write.Location = new System.Drawing.Point(331, 169);
+            this.btn_write.Location = new System.Drawing.Point(390, 185);
             this.btn_write.Name = "btn_write";
             this.btn_write.Size = new System.Drawing.Size(75, 23);
             this.btn_write.TabIndex = 16;
@@ -149,7 +213,7 @@
             this.cb_timer.AutoSize = true;
             this.cb_timer.Checked = true;
             this.cb_timer.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_timer.Location = new System.Drawing.Point(193, 52);
+            this.cb_timer.Location = new System.Drawing.Point(219, 86);
             this.cb_timer.Name = "cb_timer";
             this.cb_timer.Size = new System.Drawing.Size(133, 17);
             this.cb_timer.TabIndex = 8;
@@ -162,7 +226,7 @@
             this.cb_dis_auto.AutoSize = true;
             this.cb_dis_auto.Checked = true;
             this.cb_dis_auto.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_dis_auto.Location = new System.Drawing.Point(194, 133);
+            this.cb_dis_auto.Location = new System.Drawing.Point(220, 166);
             this.cb_dis_auto.Name = "cb_dis_auto";
             this.cb_dis_auto.Size = new System.Drawing.Size(145, 17);
             this.cb_dis_auto.TabIndex = 12;
@@ -173,7 +237,7 @@
             // tb_dis
             // 
             this.tb_dis.Enabled = false;
-            this.tb_dis.Location = new System.Drawing.Point(82, 131);
+            this.tb_dis.Location = new System.Drawing.Point(108, 164);
             this.tb_dis.MaxLength = 3;
             this.tb_dis.Name = "tb_dis";
             this.tb_dis.Size = new System.Drawing.Size(101, 20);
@@ -187,7 +251,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 135);
+            this.label5.Location = new System.Drawing.Point(8, 168);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 13);
             this.label5.TabIndex = 11;
@@ -198,7 +262,7 @@
             this.cb_ovr_set.AutoSize = true;
             this.cb_ovr_set.Checked = true;
             this.cb_ovr_set.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_ovr_set.Location = new System.Drawing.Point(193, 79);
+            this.cb_ovr_set.Location = new System.Drawing.Point(219, 112);
             this.cb_ovr_set.Name = "cb_ovr_set";
             this.cb_ovr_set.Size = new System.Drawing.Size(68, 17);
             this.cb_ovr_set.TabIndex = 10;
@@ -208,7 +272,8 @@
             // 
             // tb_seed
             // 
-            this.tb_seed.Location = new System.Drawing.Point(82, 103);
+            this.tb_seed.Enabled = false;
+            this.tb_seed.Location = new System.Drawing.Point(108, 136);
             this.tb_seed.MaxLength = 8;
             this.tb_seed.Name = "tb_seed";
             this.tb_seed.Size = new System.Drawing.Size(101, 20);
@@ -222,7 +287,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 108);
+            this.label4.Location = new System.Drawing.Point(7, 141);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 13);
             this.label4.TabIndex = 8;
@@ -230,7 +295,7 @@
             // 
             // tb_sync
             // 
-            this.tb_sync.Location = new System.Drawing.Point(82, 77);
+            this.tb_sync.Location = new System.Drawing.Point(108, 110);
             this.tb_sync.MaxLength = 4;
             this.tb_sync.Name = "tb_sync";
             this.tb_sync.Size = new System.Drawing.Size(101, 20);
@@ -244,7 +309,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 82);
+            this.label3.Location = new System.Drawing.Point(7, 115);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 6;
@@ -253,7 +318,7 @@
             // btn_gen_ser
             // 
             this.btn_gen_ser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_gen_ser.Location = new System.Drawing.Point(332, 48);
+            this.btn_gen_ser.Location = new System.Drawing.Point(391, 82);
             this.btn_gen_ser.Name = "btn_gen_ser";
             this.btn_gen_ser.Size = new System.Drawing.Size(75, 23);
             this.btn_gen_ser.TabIndex = 6;
@@ -263,7 +328,7 @@
             // 
             // tb_ser
             // 
-            this.tb_ser.Location = new System.Drawing.Point(82, 50);
+            this.tb_ser.Location = new System.Drawing.Point(108, 84);
             this.tb_ser.MaxLength = 8;
             this.tb_ser.Name = "tb_ser";
             this.tb_ser.Size = new System.Drawing.Size(101, 20);
@@ -277,7 +342,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 54);
+            this.label2.Location = new System.Drawing.Point(6, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 13);
             this.label2.TabIndex = 3;
@@ -286,7 +351,7 @@
             // btn_gen_key
             // 
             this.btn_gen_key.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_gen_key.Location = new System.Drawing.Point(332, 22);
+            this.btn_gen_key.Location = new System.Drawing.Point(391, 56);
             this.btn_gen_key.Name = "btn_gen_key";
             this.btn_gen_key.Size = new System.Drawing.Size(75, 23);
             this.btn_gen_key.TabIndex = 4;
@@ -297,20 +362,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 27);
+            this.label1.Location = new System.Drawing.Point(7, 61);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "KEY:";
+            this.label1.Text = "Crypt KEY:";
             // 
             // tb_key
             // 
             this.tb_key.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tb_key.Location = new System.Drawing.Point(82, 23);
+            this.tb_key.Location = new System.Drawing.Point(107, 57);
             this.tb_key.MaxLength = 16;
             this.tb_key.Name = "tb_key";
-            this.tb_key.Size = new System.Drawing.Size(236, 20);
+            this.tb_key.Size = new System.Drawing.Size(278, 20);
             this.tb_key.TabIndex = 5;
             this.tb_key.Text = "FFFFFFFFFFFFFFFF";
             this.tb_key.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -366,7 +431,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(590, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(649, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -397,7 +462,8 @@
             // 
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sERToolStripMenuItem,
-            this.discriminationToolStripMenuItem});
+            this.discriminationToolStripMenuItem,
+            this.learnModeToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "Options";
@@ -421,7 +487,7 @@
             // bitToolStripMenuItem
             // 
             this.bitToolStripMenuItem.Name = "bitToolStripMenuItem";
-            this.bitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.bitToolStripMenuItem.Text = "8 Bit";
             this.bitToolStripMenuItem.Click += new System.EventHandler(this.bitToolStripMenuItem_Click);
             // 
@@ -430,9 +496,42 @@
             this.bitToolStripMenuItem1.Checked = true;
             this.bitToolStripMenuItem1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.bitToolStripMenuItem1.Name = "bitToolStripMenuItem1";
-            this.bitToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.bitToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
             this.bitToolStripMenuItem1.Text = "10 Bit";
             this.bitToolStripMenuItem1.Click += new System.EventHandler(this.bitToolStripMenuItem1_Click);
+            // 
+            // learnModeToolStripMenuItem
+            // 
+            this.learnModeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.simpleLearningToolStripMenuItem,
+            this.normalLearningToolStripMenuItem,
+            this.secureLearnToolStripMenuItem});
+            this.learnModeToolStripMenuItem.Name = "learnModeToolStripMenuItem";
+            this.learnModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.learnModeToolStripMenuItem.Text = "Learn mode";
+            // 
+            // simpleLearningToolStripMenuItem
+            // 
+            this.simpleLearningToolStripMenuItem.Checked = true;
+            this.simpleLearningToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.simpleLearningToolStripMenuItem.Name = "simpleLearningToolStripMenuItem";
+            this.simpleLearningToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.simpleLearningToolStripMenuItem.Text = "Simple Learning";
+            this.simpleLearningToolStripMenuItem.Click += new System.EventHandler(this.simpleLearningToolStripMenuItem_Click);
+            // 
+            // normalLearningToolStripMenuItem
+            // 
+            this.normalLearningToolStripMenuItem.Name = "normalLearningToolStripMenuItem";
+            this.normalLearningToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.normalLearningToolStripMenuItem.Text = "Normal Learning";
+            this.normalLearningToolStripMenuItem.Click += new System.EventHandler(this.normalLearningToolStripMenuItem_Click);
+            // 
+            // secureLearnToolStripMenuItem
+            // 
+            this.secureLearnToolStripMenuItem.Name = "secureLearnToolStripMenuItem";
+            this.secureLearnToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.secureLearnToolStripMenuItem.Text = "Secure Learn";
+            this.secureLearnToolStripMenuItem.Click += new System.EventHandler(this.secureLearnToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -485,9 +584,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 357);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 384);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(590, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(649, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -517,8 +616,8 @@
             // 
             this.splitContainer1.Panel2.AutoScroll = true;
             this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
-            this.splitContainer1.Size = new System.Drawing.Size(590, 327);
-            this.splitContainer1.SplitterDistance = 208;
+            this.splitContainer1.Size = new System.Drawing.Size(649, 354);
+            this.splitContainer1.SplitterDistance = 224;
             this.splitContainer1.TabIndex = 5;
             // 
             // groupBox5
@@ -588,7 +687,7 @@
             this.groupBox3.Controls.Add(this.rtb);
             this.groupBox3.Location = new System.Drawing.Point(3, -1);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(584, 109);
+            this.groupBox3.Size = new System.Drawing.Size(643, 120);
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Log";
@@ -600,7 +699,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtb.Location = new System.Drawing.Point(6, 14);
             this.rtb.Name = "rtb";
-            this.rtb.Size = new System.Drawing.Size(572, 88);
+            this.rtb.Size = new System.Drawing.Size(631, 99);
             this.rtb.TabIndex = 17;
             this.rtb.Text = "";
             // 
@@ -609,19 +708,30 @@
             this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // btn_pp
+            // 
+            this.btn_pp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_pp.Location = new System.Drawing.Point(358, 82);
+            this.btn_pp.Name = "btn_pp";
+            this.btn_pp.Size = new System.Drawing.Size(30, 23);
+            this.btn_pp.TabIndex = 22;
+            this.btn_pp.Text = "+1";
+            this.btn_pp.UseVisualStyleBackColor = true;
+            this.btn_pp.Click += new System.EventHandler(this.btn_pp_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 379);
+            this.ClientSize = new System.Drawing.Size(649, 406);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(606, 418);
+            this.MinimumSize = new System.Drawing.Size(665, 445);
             this.Name = "Form1";
-            this.Text = "HCS301 Programmer V0.3";
+            this.Text = "HCS301 Programmer V0.2.1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -692,6 +802,15 @@
         private System.Windows.Forms.ToolStripMenuItem discriminationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bitToolStripMenuItem1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox tb_mf;
+        private System.Windows.Forms.ToolStripMenuItem learnModeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem simpleLearningToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem normalLearningToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem secureLearnToolStripMenuItem;
+        private System.Windows.Forms.Button btn_mc_clc;
+        private System.Windows.Forms.ComboBox cb_alg_sel;
+        private System.Windows.Forms.Button btn_pp;
     }
 }
 

@@ -28,6 +28,7 @@ namespace Programmer
         bool bsl_0 = false, bsl_1 = false;
         bool ser_pp = false;
         int dc = 10;
+        int learn_mode = 0;
 
         int tim1_c = 0;
         int[] Data = new int[12];
@@ -56,6 +57,7 @@ namespace Programmer
             InitializeComponent();
             update_serial_port_list();
             cb_br.SelectedIndex = 0;
+            cb_alg_sel.SelectedIndex = 0;
         }
 
 
@@ -198,6 +200,7 @@ namespace Programmer
         {
             tb_ser.Text = GetRandomHexNumber(8);
             check_msb_ser();
+            mc_clc();
 
             print_log("SER Generated " + tb_ser.Text);
         }
@@ -359,6 +362,8 @@ namespace Programmer
             if (ser >= 0xffffffff) ser = 0;
             tb_ser.Text = ser.ToString("X").PadLeft(8,'0');
             check_msb_ser();
+            print_log("SER Generated " + tb_ser.Text);
+            mc_clc();
         }
 
         public void print_RxData_to_log(object sender, EventArgs e)
@@ -460,13 +465,14 @@ namespace Programmer
             {
                 try
                 {
-                    tb_key.Text = GetRandomHexNumber(16);
-                    print_log("KEY Generated " + tb_key.Text);
+                    
 
                     tb_ser.Text = GetRandomHexNumber(8);
                     check_msb_ser();
-
                     print_log("SER Generated " + tb_ser.Text);
+
+                    tb_key.Text = GetRandomHexNumber(16);
+                    print_log("KEY Generated " + tb_key.Text);
 
                     decode_data();
                     write_data();
@@ -629,6 +635,25 @@ namespace Programmer
             }
         }
 
+        private void tb_mf_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.C)
+            {
+                tb_mf.Copy();
+                e.SuppressKeyPress = true;
+            }
+            else if (e.Control && e.KeyCode == Keys.A)
+            {
+                tb_mf.SelectAll();
+                e.SuppressKeyPress = true;
+            }
+            else if (e.Control && e.KeyCode == Keys.V)
+            {
+                tb_mf.Paste();
+                e.SuppressKeyPress = true;
+            }
+        }
+
         private void sERToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (sERToolStripMenuItem.Checked == false)
@@ -657,6 +682,128 @@ namespace Programmer
             bitToolStripMenuItem1.Checked = false;
             bitToolStripMenuItem.Checked = true;
             if (cb_dis_auto.Checked) check_msb_ser();
+        }
+
+        private void simpleLearningToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            learn_mode = 0;
+            simpleLearningToolStripMenuItem.Checked = true;
+            normalLearningToolStripMenuItem.Checked = false;
+            secureLearnToolStripMenuItem.Checked = false;
+
+            tb_mf.Enabled = false;
+            btn_mc_clc.Enabled = false;
+
+            tb_seed.Enabled = false;
+
+            cb_alg_sel.Enabled = false;
+
+            tb_key.Enabled = true;
+            btn_gen_key.Enabled = true;
+        }
+
+        private void normalLearningToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            learn_mode = 1;
+            simpleLearningToolStripMenuItem.Checked = false;
+            normalLearningToolStripMenuItem.Checked = true;
+            secureLearnToolStripMenuItem.Checked = false;
+
+            tb_mf.Enabled = true;
+            btn_mc_clc.Enabled = true;
+
+            cb_alg_sel.Enabled = true;
+
+            tb_seed.Enabled = false;
+
+            tb_key.Enabled = false;
+            btn_gen_key.Enabled = false;
+        }
+
+        private void secureLearnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            learn_mode = 2;
+            simpleLearningToolStripMenuItem.Checked = false;
+            normalLearningToolStripMenuItem.Checked = false;
+            secureLearnToolStripMenuItem.Checked = true;
+
+            tb_mf.Enabled = true;
+            btn_mc_clc.Enabled = true;
+
+            cb_alg_sel.Enabled = true;
+
+            tb_seed.Enabled = true;
+            tb_key.Enabled = false;
+            btn_gen_key.Enabled = false;
+        }
+
+        public static byte[] StringToByteArray(string hex)
+        {
+            return Enumerable.Range(0, hex.Length)
+                             .Where(x => x % 2 == 0)
+                             .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
+                             .ToArray();
+        }
+
+        // FNV-1a (64-bit) non-cryptographic hash function.
+        // Adapted from: http://github.com/jakedouglas/fnv-java
+        public ulong HashFNV1a(byte[] bytes)
+        {
+            const ulong fnv64Offset = 14695981039346656037;
+            const ulong fnv64Prime = 0x100000001b3;
+            ulong hash = fnv64Offset;
+
+            for (var i = 0; i < bytes.Length; i++)
+            {
+                hash = hash ^ bytes[i];
+                hash *= fnv64Prime;
+            }
+
+            return hash;
+        }
+
+        public void mc_clc()
+        {
+            if (learn_mode>0)
+            {
+                Int64 mkey = Int64.Parse(tb_mf.Text, System.Globalization.NumberStyles.HexNumber);
+                Int32 ser = Int32.Parse(tb_ser.Text, System.Globalization.NumberStyles.HexNumber);
+
+                // MKEY+SER
+                String str = mkey.ToString("X").PadLeft(16, '0') + (ser & 0xFFFFFFFF).ToString("X").PadLeft(8, '0');
+                byte[] buffer = StringToByteArray(str);
+
+                if (cb_alg_sel.SelectedIndex == 0)//same
+                {
+                    tb_key.Text = tb_mf.Text;
+                }
+                else if (cb_alg_sel.SelectedIndex == 1)//FNV-1a
+                {
+                    ulong hash = HashFNV1a(buffer);
+                    tb_key.Text = hash.ToString("X").PadLeft(16,'0');
+                }
+                print_log("KEY Generated " + tb_key.Text);
+            }
+        }
+
+        private void btn_mc_clc_Click(object sender, EventArgs e)
+        {
+            mc_clc();
+        }
+
+        private void btn_pp_Click(object sender, EventArgs e)
+        {
+            ser_pp_check();
+        }
+
+        private void tb_mf_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            hex_KeyPress(sender, e);
+        }
+
+        private void tb_mf_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_mf.Text.Length == 16) tb_mf.Text = tb_mf.Text.ToUpper();
         }
 
         private void cb_br_SelectedIndexChanged(object sender, EventArgs e)
