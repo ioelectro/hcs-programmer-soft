@@ -557,6 +557,11 @@ namespace Programmer
                 tb_key.Paste();
                 e.SuppressKeyPress = true;
             }
+            else if (e.Control && e.KeyCode == Keys.X)
+            {
+                tb_key.Cut();
+                e.SuppressKeyPress = true;
+            }
         }
 
         private void tb_ser_KeyDown(object sender, KeyEventArgs e)
@@ -574,6 +579,11 @@ namespace Programmer
             else if (e.Control && e.KeyCode == Keys.V)
             {
                 tb_ser.Paste();
+                e.SuppressKeyPress = true;
+            }
+            else if (e.Control && e.KeyCode == Keys.X)
+            {
+                tb_ser.Cut();
                 e.SuppressKeyPress = true;
             }
         }
@@ -595,6 +605,11 @@ namespace Programmer
                 tb_sync.Paste();
                 e.SuppressKeyPress = true;
             }
+            else if (e.Control && e.KeyCode == Keys.X)
+            {
+                tb_sync.Cut();
+                e.SuppressKeyPress = true;
+            }
         }
 
         private void tb_seed_KeyDown(object sender, KeyEventArgs e)
@@ -612,6 +627,11 @@ namespace Programmer
             else if (e.Control && e.KeyCode == Keys.V)
             {
                 tb_seed.Paste();
+                e.SuppressKeyPress = true;
+            }
+            else if (e.Control && e.KeyCode == Keys.X)
+            {
+                tb_seed.Cut();
                 e.SuppressKeyPress = true;
             }
         }
@@ -633,6 +653,11 @@ namespace Programmer
                 tb_dis.Paste();
                 e.SuppressKeyPress = true;
             }
+            else if (e.Control && e.KeyCode == Keys.X)
+            {
+                tb_dis.Cut();
+                e.SuppressKeyPress = true;
+            }
         }
 
         private void tb_mf_KeyDown(object sender, KeyEventArgs e)
@@ -650,6 +675,11 @@ namespace Programmer
             else if (e.Control && e.KeyCode == Keys.V)
             {
                 tb_mf.Paste();
+                e.SuppressKeyPress = true;
+            }
+            else if (e.Control && e.KeyCode == Keys.X)
+            {
+                tb_mf.Cut();
                 e.SuppressKeyPress = true;
             }
         }
