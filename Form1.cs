@@ -724,7 +724,7 @@ namespace Programmer
             tb_mf.Enabled = false;
             btn_mc_clc.Enabled = false;
 
-            tb_seed.Enabled = false;
+            //tb_seed.Enabled = false;
 
             cb_alg_sel.Enabled = false;
 
@@ -744,7 +744,7 @@ namespace Programmer
 
             cb_alg_sel.Enabled = true;
 
-            tb_seed.Enabled = false;
+            //tb_seed.Enabled = false;
 
             tb_key.Enabled = false;
             btn_gen_key.Enabled = false;
@@ -762,7 +762,7 @@ namespace Programmer
 
             cb_alg_sel.Enabled = true;
 
-            tb_seed.Enabled = true;
+            //tb_seed.Enabled = true;
             tb_key.Enabled = false;
             btn_gen_key.Enabled = false;
         }

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_pp = new System.Windows.Forms.Button();
             this.cb_alg_sel = new System.Windows.Forms.ComboBox();
             this.btn_mc_clc = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -86,7 +87,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rtb = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btn_pp = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -133,6 +133,17 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Main";
+            // 
+            // btn_pp
+            // 
+            this.btn_pp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_pp.Location = new System.Drawing.Point(358, 82);
+            this.btn_pp.Name = "btn_pp";
+            this.btn_pp.Size = new System.Drawing.Size(30, 23);
+            this.btn_pp.TabIndex = 22;
+            this.btn_pp.Text = "+1";
+            this.btn_pp.UseVisualStyleBackColor = true;
+            this.btn_pp.Click += new System.EventHandler(this.btn_pp_Click);
             // 
             // cb_alg_sel
             // 
@@ -272,7 +283,6 @@
             // 
             // tb_seed
             // 
-            this.tb_seed.Enabled = false;
             this.tb_seed.Location = new System.Drawing.Point(108, 136);
             this.tb_seed.MaxLength = 8;
             this.tb_seed.Name = "tb_seed";
@@ -471,7 +481,7 @@
             // sERToolStripMenuItem
             // 
             this.sERToolStripMenuItem.Name = "sERToolStripMenuItem";
-            this.sERToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sERToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.sERToolStripMenuItem.Text = "SER++ if Done!";
             this.sERToolStripMenuItem.Click += new System.EventHandler(this.sERToolStripMenuItem_Click);
             // 
@@ -481,13 +491,13 @@
             this.bitToolStripMenuItem,
             this.bitToolStripMenuItem1});
             this.discriminationToolStripMenuItem.Name = "discriminationToolStripMenuItem";
-            this.discriminationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.discriminationToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.discriminationToolStripMenuItem.Text = "Discrimination Crop";
             // 
             // bitToolStripMenuItem
             // 
             this.bitToolStripMenuItem.Name = "bitToolStripMenuItem";
-            this.bitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.bitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bitToolStripMenuItem.Text = "8 Bit";
             this.bitToolStripMenuItem.Click += new System.EventHandler(this.bitToolStripMenuItem_Click);
             // 
@@ -496,7 +506,7 @@
             this.bitToolStripMenuItem1.Checked = true;
             this.bitToolStripMenuItem1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.bitToolStripMenuItem1.Name = "bitToolStripMenuItem1";
-            this.bitToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
+            this.bitToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.bitToolStripMenuItem1.Text = "10 Bit";
             this.bitToolStripMenuItem1.Click += new System.EventHandler(this.bitToolStripMenuItem1_Click);
             // 
@@ -507,29 +517,29 @@
             this.normalLearningToolStripMenuItem,
             this.secureLearnToolStripMenuItem});
             this.learnModeToolStripMenuItem.Name = "learnModeToolStripMenuItem";
-            this.learnModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.learnModeToolStripMenuItem.Text = "Learn mode";
+            this.learnModeToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.learnModeToolStripMenuItem.Text = "Learn mode (Develop)";
             // 
             // simpleLearningToolStripMenuItem
             // 
             this.simpleLearningToolStripMenuItem.Checked = true;
             this.simpleLearningToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.simpleLearningToolStripMenuItem.Name = "simpleLearningToolStripMenuItem";
-            this.simpleLearningToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.simpleLearningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.simpleLearningToolStripMenuItem.Text = "Simple Learning";
             this.simpleLearningToolStripMenuItem.Click += new System.EventHandler(this.simpleLearningToolStripMenuItem_Click);
             // 
             // normalLearningToolStripMenuItem
             // 
             this.normalLearningToolStripMenuItem.Name = "normalLearningToolStripMenuItem";
-            this.normalLearningToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.normalLearningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.normalLearningToolStripMenuItem.Text = "Normal Learning";
             this.normalLearningToolStripMenuItem.Click += new System.EventHandler(this.normalLearningToolStripMenuItem_Click);
             // 
             // secureLearnToolStripMenuItem
             // 
             this.secureLearnToolStripMenuItem.Name = "secureLearnToolStripMenuItem";
-            this.secureLearnToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.secureLearnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.secureLearnToolStripMenuItem.Text = "Secure Learn";
             this.secureLearnToolStripMenuItem.Click += new System.EventHandler(this.secureLearnToolStripMenuItem_Click);
             // 
@@ -708,17 +718,6 @@
             this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // btn_pp
-            // 
-            this.btn_pp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_pp.Location = new System.Drawing.Point(358, 82);
-            this.btn_pp.Name = "btn_pp";
-            this.btn_pp.Size = new System.Drawing.Size(30, 23);
-            this.btn_pp.TabIndex = 22;
-            this.btn_pp.Text = "+1";
-            this.btn_pp.UseVisualStyleBackColor = true;
-            this.btn_pp.Click += new System.EventHandler(this.btn_pp_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -731,7 +730,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(665, 445);
             this.Name = "Form1";
-            this.Text = "HCS301 Programmer V0.2.1";
+            this.Text = "HCS301 Programmer V0.2.2";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
