@@ -818,6 +818,32 @@ namespace Programmer
             return ciphertext;
         }
 
+        public UInt32 keeloq_decrypt(UInt64 key, UInt32 ciphertext, UInt16 nrounds)
+        {
+            UInt32 plaintext;
+            UInt16 o, xor, nlf_input,i,k,ki;
+            plaintext = ciphertext;
+            for (i = 0; i < nrounds; i++)
+            {
+                nlf_input = (UInt16)(((plaintext >> 30) & 0x1) << 4);
+                nlf_input |= (UInt16)(((plaintext >> 25) & 0x1) << 3);
+                nlf_input |= (UInt16)(((plaintext >> 19) & 0x1) << 2);
+                nlf_input |= (UInt16)(((plaintext >> 8) & 0x1) << 1);
+                nlf_input |= (UInt16)(plaintext & 0x1);
+
+                o = nlf(nlf_input);
+
+                ki = (UInt16)((15 - i) % 64);
+
+                k = (UInt16)((key >> ki) & 0x1);
+
+                xor =(UInt16) (k ^ ((plaintext >> 31) & 0x1) ^ ((plaintext >> 15) & 0x1) ^ o);
+                plaintext = (plaintext << 1) | xor;
+            }
+            return plaintext;
+        }
+
+
         public ulong gen_normal_key(ulong mf_key,UInt32 seed)
         {
             ulong ret = 0;
@@ -827,11 +853,11 @@ namespace Programmer
 
             temp = seed;
             temp |= 0x20000000;
-            ret = keeloq_encrypt(mf_key, temp, KEELOQ_NROUNDS);
+            ret = keeloq_decrypt(mf_key, temp, KEELOQ_NROUNDS);
 
             temp = seed;
             temp |= 0x60000000;
-            ret |= ((UInt64)keeloq_encrypt(mf_key,temp,KEELOQ_NROUNDS)<<32);
+            ret |= ((UInt64)keeloq_decrypt(mf_key,temp,KEELOQ_NROUNDS)<<32);
 
             return ret;
         }
