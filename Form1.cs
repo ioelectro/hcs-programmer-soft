@@ -1,7 +1,11 @@
 ﻿/*
  HCS Programmer Soft
  By Liyanboy74
+
  https://github.com/liyanboy74
+ https://github.com/liyanboy74/KeeLoq
+ https://github.com/hnhkj/documents/tree/master/KEELOQ/docs
+ https://github.com/ihydrad/Keeloq-decrypt/tree/master/readme
 */
 
 using System;
@@ -847,12 +851,13 @@ namespace Programmer
             return ret;
         }
 
-        public ulong gen_secure_key(ulong mf_key,UInt32 seed)
+        public ulong gen_secure_key(ulong mf_key,UInt32 seed,UInt32 ser)
         {
             ulong ret = 0;
 
-            ret = ((mf_key >> 32) ^ 0) << 32;
-            ret |= (mf_key & 0xffffffff) ^ seed;
+            ret = keeloq_decrypt(mf_key, seed, KEELOQ_NROUNDS);
+            ser &= 0x0fffffff;
+            ret |= ((UInt64)keeloq_decrypt(mf_key, ser, KEELOQ_NROUNDS) << 32);
 
             return ret;
         }
@@ -873,7 +878,7 @@ namespace Programmer
                 }
                 else if(learn_mode==3)
                 {
-                    hash = gen_secure_key(mkey, seed);
+                    hash = gen_secure_key(mkey, seed,ser);
                 }
 
 

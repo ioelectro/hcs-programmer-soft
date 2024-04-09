@@ -512,28 +512,28 @@
             this.noneToolStripMenuItem.Checked = true;
             this.noneToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.noneToolStripMenuItem.Name = "noneToolStripMenuItem";
-            this.noneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.noneToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.noneToolStripMenuItem.Text = "None";
             this.noneToolStripMenuItem.Click += new System.EventHandler(this.noneToolStripMenuItem_Click);
             // 
             // simpleLearningToolStripMenuItem
             // 
             this.simpleLearningToolStripMenuItem.Name = "simpleLearningToolStripMenuItem";
-            this.simpleLearningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.simpleLearningToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.simpleLearningToolStripMenuItem.Text = "Simple Learning";
             this.simpleLearningToolStripMenuItem.Click += new System.EventHandler(this.simpleLearningToolStripMenuItem_Click);
             // 
             // normalLearningToolStripMenuItem
             // 
             this.normalLearningToolStripMenuItem.Name = "normalLearningToolStripMenuItem";
-            this.normalLearningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.normalLearningToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.normalLearningToolStripMenuItem.Text = "Normal Learning";
             this.normalLearningToolStripMenuItem.Click += new System.EventHandler(this.normalLearningToolStripMenuItem_Click);
             // 
             // secureLearnToolStripMenuItem
             // 
             this.secureLearnToolStripMenuItem.Name = "secureLearnToolStripMenuItem";
-            this.secureLearnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.secureLearnToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.secureLearnToolStripMenuItem.Text = "Secure Learn";
             this.secureLearnToolStripMenuItem.Click += new System.EventHandler(this.secureLearnToolStripMenuItem_Click);
             // 
@@ -724,7 +724,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(665, 445);
             this.Name = "Form1";
-            this.Text = "HCS301 Programmer V0.2.4";
+            this.Text = "HCS301 Programmer V0.2.5";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
