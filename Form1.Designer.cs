@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_gen_seed = new System.Windows.Forms.Button();
             this.btn_pp = new System.Windows.Forms.Button();
             this.btn_mc_clc = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -65,6 +66,7 @@
             this.bitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.learnModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.noneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.simpleLearningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.normalLearningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.secureLearnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,8 +87,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rtb = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.noneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btn_gen_seed = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -132,6 +132,17 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Main";
+            // 
+            // btn_gen_seed
+            // 
+            this.btn_gen_seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_gen_seed.Location = new System.Drawing.Point(390, 134);
+            this.btn_gen_seed.Name = "btn_gen_seed";
+            this.btn_gen_seed.Size = new System.Drawing.Size(75, 23);
+            this.btn_gen_seed.TabIndex = 23;
+            this.btn_gen_seed.Text = "Generate";
+            this.btn_gen_seed.UseVisualStyleBackColor = true;
+            this.btn_gen_seed.Click += new System.EventHandler(this.btn_gen_seed_Click);
             // 
             // btn_pp
             // 
@@ -496,6 +507,15 @@
             this.learnModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.learnModeToolStripMenuItem.Text = "Learn mode";
             // 
+            // noneToolStripMenuItem
+            // 
+            this.noneToolStripMenuItem.Checked = true;
+            this.noneToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.noneToolStripMenuItem.Name = "noneToolStripMenuItem";
+            this.noneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.noneToolStripMenuItem.Text = "None";
+            this.noneToolStripMenuItem.Click += new System.EventHandler(this.noneToolStripMenuItem_Click);
+            // 
             // simpleLearningToolStripMenuItem
             // 
             this.simpleLearningToolStripMenuItem.Name = "simpleLearningToolStripMenuItem";
@@ -692,26 +712,6 @@
             this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // noneToolStripMenuItem
-            // 
-            this.noneToolStripMenuItem.Checked = true;
-            this.noneToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.noneToolStripMenuItem.Name = "noneToolStripMenuItem";
-            this.noneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.noneToolStripMenuItem.Text = "None";
-            this.noneToolStripMenuItem.Click += new System.EventHandler(this.noneToolStripMenuItem_Click);
-            // 
-            // btn_gen_seed
-            // 
-            this.btn_gen_seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_gen_seed.Location = new System.Drawing.Point(390, 134);
-            this.btn_gen_seed.Name = "btn_gen_seed";
-            this.btn_gen_seed.Size = new System.Drawing.Size(75, 23);
-            this.btn_gen_seed.TabIndex = 23;
-            this.btn_gen_seed.Text = "Generate";
-            this.btn_gen_seed.UseVisualStyleBackColor = true;
-            this.btn_gen_seed.Click += new System.EventHandler(this.btn_gen_seed_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -724,7 +724,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(665, 445);
             this.Name = "Form1";
-            this.Text = "HCS301 Programmer V0.2.3";
+            this.Text = "HCS301 Programmer V0.2.4";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
