@@ -57,7 +57,6 @@ namespace Programmer
             InitializeComponent();
             update_serial_port_list();
             cb_br.SelectedIndex = 0;
-            cb_alg_sel.SelectedIndex = 0;
         }
 
 
@@ -89,7 +88,6 @@ namespace Programmer
                     btn_connect.Text = "Disconect";
                     print_log("Connected to " + serial_port.PortName);
                     btn_write.Enabled = true;
-                    btn_auto.Enabled = true;
 
                     get_dev_ver();
                 }
@@ -112,7 +110,6 @@ namespace Programmer
                 btn_update_port.Enabled = true;
                 print_log("Disconected");
                 btn_write.Enabled = false;
-                btn_auto.Enabled = false;
             }
         }
 
@@ -357,7 +354,7 @@ namespace Programmer
 
         public void ser_pp_check()
         {
-            int ser = int.Parse(tb_ser.Text, System.Globalization.NumberStyles.HexNumber);
+            uint ser = uint.Parse(tb_ser.Text, System.Globalization.NumberStyles.HexNumber);
             ser++;
             if (ser >= 0xffffffff) ser = 0;
             tb_ser.Text = ser.ToString("X").PadLeft(8,'0');
@@ -457,32 +454,6 @@ namespace Programmer
                 timer1.Stop();
                 print_log("WARNING! UNKNOWN Device");
             }
-        }
-
-        private void btn_auto_Click(object sender, EventArgs e)
-        {
-            if (serial_port.IsOpen)
-            {
-                try
-                {
-                    
-
-                    tb_ser.Text = GetRandomHexNumber(8);
-                    check_msb_ser();
-                    print_log("SER Generated " + tb_ser.Text);
-
-                    tb_key.Text = GetRandomHexNumber(16);
-                    print_log("KEY Generated " + tb_key.Text);
-
-                    decode_data();
-                    write_data();
-                }
-                catch (Exception err)
-                {
-                    print_log("ERROR! " + err.Message);
-                }
-            }
-            else print_log("ERROR! Serial Port not Open");
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -714,9 +685,29 @@ namespace Programmer
             if (cb_dis_auto.Checked) check_msb_ser();
         }
 
-        private void simpleLearningToolStripMenuItem_Click(object sender, EventArgs e)
+        private void noneToolStripMenuItem_Click(object sender, EventArgs e)
         {
             learn_mode = 0;
+            noneToolStripMenuItem.Checked = true;
+            simpleLearningToolStripMenuItem.Checked = false;
+            normalLearningToolStripMenuItem.Checked = false;
+            secureLearnToolStripMenuItem.Checked = false;
+
+            tb_mf.Enabled = false;
+            btn_mc_clc.Enabled = false;
+
+            tb_seed.Enabled = true;
+            btn_gen_seed.Enabled = true;
+
+            tb_key.Enabled = true;
+            btn_gen_key.Enabled = true;
+        }
+
+
+        private void simpleLearningToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            learn_mode = 1;
+            noneToolStripMenuItem.Checked = false;
             simpleLearningToolStripMenuItem.Checked = true;
             normalLearningToolStripMenuItem.Checked = false;
             secureLearnToolStripMenuItem.Checked = false;
@@ -724,9 +715,9 @@ namespace Programmer
             tb_mf.Enabled = false;
             btn_mc_clc.Enabled = false;
 
-            //tb_seed.Enabled = false;
-
-            cb_alg_sel.Enabled = false;
+            tb_seed.Enabled = false;
+            btn_gen_seed.Enabled = false;
+            tb_seed.Text = "00000000";
 
             tb_key.Enabled = true;
             btn_gen_key.Enabled = true;
@@ -734,7 +725,8 @@ namespace Programmer
 
         private void normalLearningToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            learn_mode = 1;
+            learn_mode = 2;
+            noneToolStripMenuItem.Checked = false;
             simpleLearningToolStripMenuItem.Checked = false;
             normalLearningToolStripMenuItem.Checked = true;
             secureLearnToolStripMenuItem.Checked = false;
@@ -742,9 +734,9 @@ namespace Programmer
             tb_mf.Enabled = true;
             btn_mc_clc.Enabled = true;
 
-            cb_alg_sel.Enabled = true;
-
-            //tb_seed.Enabled = false;
+            tb_seed.Enabled = false;
+            btn_gen_seed.Enabled = false;
+            tb_seed.Text = "00000000";
 
             tb_key.Enabled = false;
             btn_gen_key.Enabled = false;
@@ -752,7 +744,8 @@ namespace Programmer
 
         private void secureLearnToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            learn_mode = 2;
+            learn_mode = 3;
+            noneToolStripMenuItem.Checked = false;
             simpleLearningToolStripMenuItem.Checked = false;
             normalLearningToolStripMenuItem.Checked = false;
             secureLearnToolStripMenuItem.Checked = true;
@@ -760,9 +753,9 @@ namespace Programmer
             tb_mf.Enabled = true;
             btn_mc_clc.Enabled = true;
 
-            cb_alg_sel.Enabled = true;
+            tb_seed.Enabled = true;
+            btn_gen_seed.Enabled = true;
 
-            //tb_seed.Enabled = true;
             tb_key.Enabled = false;
             btn_gen_key.Enabled = false;
         }
@@ -792,26 +785,88 @@ namespace Programmer
             return hash;
         }
 
+        UInt16 KEELOQ_NROUNDS = 528;
+        UInt32 NLF_LOOKUP_CONSTANT = 0x3a5c742e;
+
+        public UInt16 nlf(UInt16 d)
+        {
+            return (UInt16)(((UInt32)(NLF_LOOKUP_CONSTANT) >> d) & 0x1);
+        }
+
+        public UInt32 keeloq_encrypt(UInt64 key, UInt32 plaintext, UInt16 nrounds)
+        {
+            UInt32 ciphertext;
+            UInt16 o, xor, nlf_input,i,k,ki;
+            ciphertext = plaintext;
+            for (i = 0; i < nrounds; i++)
+            {
+                nlf_input = (UInt16)(((ciphertext >> 31) & 0x1) << 4);
+                nlf_input |= (UInt16)(((ciphertext >> 26) & 0x1) << 3);
+                nlf_input |= (UInt16) (((ciphertext >> 20) & 0x1) << 2);
+                nlf_input |= (UInt16)(((ciphertext >> 9) & 0x1) << 1);
+                nlf_input |= (UInt16)((ciphertext >> 1) & 0x1);
+
+                o = nlf(nlf_input);
+
+                ki =(UInt16)( i % 64);
+
+                k = (UInt16)(( key >> ki) & 0x1);
+
+                xor = (UInt16)(k ^ ((ciphertext >> 16) & 0x1) ^ (ciphertext & 0x1) ^ o);
+                ciphertext = (ciphertext >> 1) | ((UInt32)(xor) << 31);
+            }
+            return ciphertext;
+        }
+
+        public ulong gen_normal_key(ulong mf_key,UInt32 seed)
+        {
+            ulong ret = 0;
+            UInt32 temp;
+
+            seed &= 0x0fffffff;// mask out function codes 
+
+            temp = seed;
+            temp |= 0x20000000;
+            ret = keeloq_encrypt(mf_key, temp, KEELOQ_NROUNDS);
+
+            temp = seed;
+            temp |= 0x60000000;
+            ret |= ((UInt64)keeloq_encrypt(mf_key,temp,KEELOQ_NROUNDS)<<32);
+
+            return ret;
+        }
+
+        public ulong gen_secure_key(ulong mf_key,UInt32 seed)
+        {
+            ulong ret = 0;
+
+            ret = ((mf_key >> 32) ^ 0) << 32;
+            ret |= (mf_key & 0xffffffff) ^ seed;
+
+            return ret;
+        }
+
         public void mc_clc()
         {
-            if (learn_mode>0)
+            if (learn_mode>1)
             {
-                Int64 mkey = Int64.Parse(tb_mf.Text, System.Globalization.NumberStyles.HexNumber);
-                Int32 ser = Int32.Parse(tb_ser.Text, System.Globalization.NumberStyles.HexNumber);
+                UInt64 mkey = UInt64.Parse(tb_mf.Text, System.Globalization.NumberStyles.HexNumber);
+                UInt32 ser = UInt32.Parse(tb_ser.Text, System.Globalization.NumberStyles.HexNumber);
+                UInt32 seed = UInt32.Parse(tb_seed.Text, System.Globalization.NumberStyles.HexNumber);
 
-                // MKEY+SER
-                String str = mkey.ToString("X").PadLeft(16, '0') + (ser & 0xFFFFFFFF).ToString("X").PadLeft(8, '0');
-                byte[] buffer = StringToByteArray(str);
+                ulong hash = 0;
 
-                if (cb_alg_sel.SelectedIndex == 0)//same
+                if (learn_mode==2)
                 {
-                    tb_key.Text = tb_mf.Text;
+                    hash = gen_normal_key(mkey, ser);
                 }
-                else if (cb_alg_sel.SelectedIndex == 1)//FNV-1a
+                else if(learn_mode==3)
                 {
-                    ulong hash = HashFNV1a(buffer);
-                    tb_key.Text = hash.ToString("X").PadLeft(16,'0');
+                    hash = gen_secure_key(mkey, seed);
                 }
+
+
+                tb_key.Text = hash.ToString("X").PadLeft(16, '0');
                 print_log("KEY Generated " + tb_key.Text);
             }
         }
@@ -834,6 +889,15 @@ namespace Programmer
         private void tb_mf_TextChanged(object sender, EventArgs e)
         {
             if (tb_mf.Text.Length == 16) tb_mf.Text = tb_mf.Text.ToUpper();
+        }
+
+        private void btn_gen_seed_Click(object sender, EventArgs e)
+        {
+            tb_seed.Text = GetRandomHexNumber(8);
+            print_log("SEED Generated " + tb_seed.Text);
+
+            mc_clc();
+            
         }
 
         private void cb_br_SelectedIndexChanged(object sender, EventArgs e)

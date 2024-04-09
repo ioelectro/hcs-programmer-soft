@@ -32,11 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_pp = new System.Windows.Forms.Button();
-            this.cb_alg_sel = new System.Windows.Forms.ComboBox();
             this.btn_mc_clc = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.tb_mf = new System.Windows.Forms.TextBox();
-            this.btn_auto = new System.Windows.Forms.Button();
             this.btn_write = new System.Windows.Forms.Button();
             this.cb_timer = new System.Windows.Forms.CheckBox();
             this.cb_dis_auto = new System.Windows.Forms.CheckBox();
@@ -87,6 +85,8 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rtb = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.noneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_gen_seed = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -105,12 +105,11 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btn_gen_seed);
             this.groupBox1.Controls.Add(this.btn_pp);
-            this.groupBox1.Controls.Add(this.cb_alg_sel);
             this.groupBox1.Controls.Add(this.btn_mc_clc);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.tb_mf);
-            this.groupBox1.Controls.Add(this.btn_auto);
             this.groupBox1.Controls.Add(this.btn_write);
             this.groupBox1.Controls.Add(this.cb_timer);
             this.groupBox1.Controls.Add(this.cb_dis_auto);
@@ -145,28 +144,15 @@
             this.btn_pp.UseVisualStyleBackColor = true;
             this.btn_pp.Click += new System.EventHandler(this.btn_pp_Click);
             // 
-            // cb_alg_sel
-            // 
-            this.cb_alg_sel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cb_alg_sel.Enabled = false;
-            this.cb_alg_sel.FormattingEnabled = true;
-            this.cb_alg_sel.Items.AddRange(new object[] {
-            "Same",
-            "FNV-1a"});
-            this.cb_alg_sel.Location = new System.Drawing.Point(310, 30);
-            this.cb_alg_sel.Name = "cb_alg_sel";
-            this.cb_alg_sel.Size = new System.Drawing.Size(74, 21);
-            this.cb_alg_sel.TabIndex = 21;
-            // 
             // btn_mc_clc
             // 
             this.btn_mc_clc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_mc_clc.Enabled = false;
-            this.btn_mc_clc.Location = new System.Drawing.Point(390, 29);
+            this.btn_mc_clc.Location = new System.Drawing.Point(391, 29);
             this.btn_mc_clc.Name = "btn_mc_clc";
             this.btn_mc_clc.Size = new System.Drawing.Size(75, 23);
             this.btn_mc_clc.TabIndex = 20;
-            this.btn_mc_clc.Text = "Generate";
+            this.btn_mc_clc.Text = "Apply";
             this.btn_mc_clc.UseVisualStyleBackColor = true;
             this.btn_mc_clc.Click += new System.EventHandler(this.btn_mc_clc_Click);
             // 
@@ -187,33 +173,22 @@
             this.tb_mf.Location = new System.Drawing.Point(107, 30);
             this.tb_mf.MaxLength = 16;
             this.tb_mf.Name = "tb_mf";
-            this.tb_mf.Size = new System.Drawing.Size(197, 20);
+            this.tb_mf.Size = new System.Drawing.Size(278, 20);
             this.tb_mf.TabIndex = 19;
-            this.tb_mf.Text = "0000000000000000";
+            this.tb_mf.Text = "0123456789ABCDEF";
             this.tb_mf.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_mf.TextChanged += new System.EventHandler(this.tb_mf_TextChanged);
             this.tb_mf.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tb_mf_KeyDown);
             this.tb_mf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_mf_KeyPress);
             // 
-            // btn_auto
-            // 
-            this.btn_auto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_auto.Enabled = false;
-            this.btn_auto.Location = new System.Drawing.Point(310, 185);
-            this.btn_auto.Name = "btn_auto";
-            this.btn_auto.Size = new System.Drawing.Size(75, 23);
-            this.btn_auto.TabIndex = 3;
-            this.btn_auto.Text = "Auto";
-            this.btn_auto.UseVisualStyleBackColor = true;
-            this.btn_auto.Click += new System.EventHandler(this.btn_auto_Click);
-            // 
             // btn_write
             // 
             this.btn_write.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_write.Enabled = false;
-            this.btn_write.Location = new System.Drawing.Point(390, 185);
+            this.btn_write.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_write.Location = new System.Drawing.Point(390, 171);
             this.btn_write.Name = "btn_write";
-            this.btn_write.Size = new System.Drawing.Size(75, 23);
+            this.btn_write.Size = new System.Drawing.Size(75, 37);
             this.btn_write.TabIndex = 16;
             this.btn_write.Text = "Write";
             this.btn_write.UseVisualStyleBackColor = true;
@@ -374,9 +349,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(7, 61);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.Size = new System.Drawing.Size(31, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Crypt KEY:";
+            this.label1.Text = "KEY:";
             // 
             // tb_key
             // 
@@ -481,7 +456,7 @@
             // sERToolStripMenuItem
             // 
             this.sERToolStripMenuItem.Name = "sERToolStripMenuItem";
-            this.sERToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.sERToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sERToolStripMenuItem.Text = "SER++ if Done!";
             this.sERToolStripMenuItem.Click += new System.EventHandler(this.sERToolStripMenuItem_Click);
             // 
@@ -491,13 +466,13 @@
             this.bitToolStripMenuItem,
             this.bitToolStripMenuItem1});
             this.discriminationToolStripMenuItem.Name = "discriminationToolStripMenuItem";
-            this.discriminationToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.discriminationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.discriminationToolStripMenuItem.Text = "Discrimination Crop";
             // 
             // bitToolStripMenuItem
             // 
             this.bitToolStripMenuItem.Name = "bitToolStripMenuItem";
-            this.bitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.bitToolStripMenuItem.Text = "8 Bit";
             this.bitToolStripMenuItem.Click += new System.EventHandler(this.bitToolStripMenuItem_Click);
             // 
@@ -506,24 +481,23 @@
             this.bitToolStripMenuItem1.Checked = true;
             this.bitToolStripMenuItem1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.bitToolStripMenuItem1.Name = "bitToolStripMenuItem1";
-            this.bitToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.bitToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
             this.bitToolStripMenuItem1.Text = "10 Bit";
             this.bitToolStripMenuItem1.Click += new System.EventHandler(this.bitToolStripMenuItem1_Click);
             // 
             // learnModeToolStripMenuItem
             // 
             this.learnModeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.noneToolStripMenuItem,
             this.simpleLearningToolStripMenuItem,
             this.normalLearningToolStripMenuItem,
             this.secureLearnToolStripMenuItem});
             this.learnModeToolStripMenuItem.Name = "learnModeToolStripMenuItem";
-            this.learnModeToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.learnModeToolStripMenuItem.Text = "Learn mode (Develop)";
+            this.learnModeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.learnModeToolStripMenuItem.Text = "Learn mode";
             // 
             // simpleLearningToolStripMenuItem
             // 
-            this.simpleLearningToolStripMenuItem.Checked = true;
-            this.simpleLearningToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.simpleLearningToolStripMenuItem.Name = "simpleLearningToolStripMenuItem";
             this.simpleLearningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.simpleLearningToolStripMenuItem.Text = "Simple Learning";
@@ -718,6 +692,26 @@
             this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // noneToolStripMenuItem
+            // 
+            this.noneToolStripMenuItem.Checked = true;
+            this.noneToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.noneToolStripMenuItem.Name = "noneToolStripMenuItem";
+            this.noneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.noneToolStripMenuItem.Text = "None";
+            this.noneToolStripMenuItem.Click += new System.EventHandler(this.noneToolStripMenuItem_Click);
+            // 
+            // btn_gen_seed
+            // 
+            this.btn_gen_seed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_gen_seed.Location = new System.Drawing.Point(390, 134);
+            this.btn_gen_seed.Name = "btn_gen_seed";
+            this.btn_gen_seed.Size = new System.Drawing.Size(75, 23);
+            this.btn_gen_seed.TabIndex = 23;
+            this.btn_gen_seed.Text = "Generate";
+            this.btn_gen_seed.UseVisualStyleBackColor = true;
+            this.btn_gen_seed.Click += new System.EventHandler(this.btn_gen_seed_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -730,7 +724,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(665, 445);
             this.Name = "Form1";
-            this.Text = "HCS301 Programmer V0.2.2";
+            this.Text = "HCS301 Programmer V0.2.3";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -789,7 +783,6 @@
         private System.Windows.Forms.CheckBox cb_timer;
         private System.Windows.Forms.Button btn_write;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button btn_auto;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportProblemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
@@ -808,8 +801,9 @@
         private System.Windows.Forms.ToolStripMenuItem normalLearningToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem secureLearnToolStripMenuItem;
         private System.Windows.Forms.Button btn_mc_clc;
-        private System.Windows.Forms.ComboBox cb_alg_sel;
         private System.Windows.Forms.Button btn_pp;
+        private System.Windows.Forms.ToolStripMenuItem noneToolStripMenuItem;
+        private System.Windows.Forms.Button btn_gen_seed;
     }
 }
 

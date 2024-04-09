@@ -7,7 +7,7 @@
     <ProjectGuid>{917791B5-231E-4832-9E8C-FE4E65DAC6FB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Programmer</RootNamespace>
-    <AssemblyName>HCS301-Programmer-v0.2.2</AssemblyName>
+    <AssemblyName>HCS301-Programmer-v0.2.3</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.2.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
