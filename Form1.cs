@@ -768,31 +768,15 @@ namespace Programmer
                              .ToArray();
         }
 
-        // FNV-1a (64-bit) non-cryptographic hash function.
-        // Adapted from: http://github.com/jakedouglas/fnv-java
-        public ulong HashFNV1a(byte[] bytes)
-        {
-            const ulong fnv64Offset = 14695981039346656037;
-            const ulong fnv64Prime = 0x100000001b3;
-            ulong hash = fnv64Offset;
-
-            for (var i = 0; i < bytes.Length; i++)
-            {
-                hash = hash ^ bytes[i];
-                hash *= fnv64Prime;
-            }
-
-            return hash;
-        }
-
-        UInt16 KEELOQ_NROUNDS = 528;
-        UInt32 NLF_LOOKUP_CONSTANT = 0x3a5c742e;
+        const UInt16 KEELOQ_NROUNDS = 528;
+        const UInt32 NLF_LOOKUP_CONSTANT = 0x3a5c742e;
 
         public UInt16 nlf(UInt16 d)
         {
             return (UInt16)(((UInt32)(NLF_LOOKUP_CONSTANT) >> d) & 0x1);
         }
 
+        /*
         public UInt32 keeloq_encrypt(UInt64 key, UInt32 plaintext, UInt16 nrounds)
         {
             UInt32 ciphertext;
@@ -817,6 +801,7 @@ namespace Programmer
             }
             return ciphertext;
         }
+        */
 
         public UInt32 keeloq_decrypt(UInt64 key, UInt32 ciphertext, UInt16 nrounds)
         {
