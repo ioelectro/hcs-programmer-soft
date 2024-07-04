@@ -833,18 +833,18 @@ namespace Programmer
         }
 
 
-        public ulong gen_normal_key(ulong mf_key,UInt32 seed)
+        public ulong gen_normal_key(ulong mf_key,UInt32 ser)
         {
             ulong ret = 0;
             UInt32 temp;
 
-            seed &= 0x0fffffff;// mask out function codes 
+            ser &= 0x0fffffff;// mask out function codes 
 
-            temp = seed;
+            temp = ser;
             temp |= 0x20000000;
             ret = keeloq_decrypt(mf_key, temp, KEELOQ_NROUNDS);
 
-            temp = seed;
+            temp = ser;
             temp |= 0x60000000;
             ret |= ((UInt64)keeloq_decrypt(mf_key,temp,KEELOQ_NROUNDS)<<32);
 
