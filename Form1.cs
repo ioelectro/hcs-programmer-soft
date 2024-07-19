@@ -699,6 +699,8 @@ namespace Programmer
 
             tb_mf.Enabled = false;
             btn_mc_clc.Enabled = false;
+            btn_mc_gen.Enabled = false;
+
 
             tb_seed.Enabled = true;
             btn_gen_seed.Enabled = true;
@@ -718,6 +720,8 @@ namespace Programmer
 
             tb_mf.Enabled = false;
             btn_mc_clc.Enabled = false;
+            btn_mc_gen.Enabled = false;
+
 
             tb_seed.Enabled = false;
             btn_gen_seed.Enabled = false;
@@ -737,6 +741,7 @@ namespace Programmer
 
             tb_mf.Enabled = true;
             btn_mc_clc.Enabled = true;
+            btn_mc_gen.Enabled = true;
 
             tb_seed.Enabled = false;
             btn_gen_seed.Enabled = false;
@@ -756,6 +761,8 @@ namespace Programmer
 
             tb_mf.Enabled = true;
             btn_mc_clc.Enabled = true;
+            btn_mc_gen.Enabled = true;
+
 
             tb_seed.Enabled = true;
             btn_gen_seed.Enabled = true;
@@ -914,6 +921,12 @@ namespace Programmer
 
             mc_clc();
             
+        }
+
+        private void btn_mc_gen_Click(object sender, EventArgs e)
+        {
+            tb_mf.Text = GetRandomHexNumber(16);
+            print_log("Manufacturer Code Generated " + tb_mf.Text);
         }
 
         private void cb_br_SelectedIndexChanged(object sender, EventArgs e)

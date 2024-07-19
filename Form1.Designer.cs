@@ -87,6 +87,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rtb = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btn_mc_gen = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -105,6 +106,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btn_mc_gen);
             this.groupBox1.Controls.Add(this.btn_gen_seed);
             this.groupBox1.Controls.Add(this.btn_pp);
             this.groupBox1.Controls.Add(this.btn_mc_clc);
@@ -147,7 +149,7 @@
             // btn_pp
             // 
             this.btn_pp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_pp.Location = new System.Drawing.Point(358, 82);
+            this.btn_pp.Location = new System.Drawing.Point(357, 82);
             this.btn_pp.Name = "btn_pp";
             this.btn_pp.Size = new System.Drawing.Size(30, 23);
             this.btn_pp.TabIndex = 22;
@@ -159,7 +161,7 @@
             // 
             this.btn_mc_clc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_mc_clc.Enabled = false;
-            this.btn_mc_clc.Location = new System.Drawing.Point(391, 29);
+            this.btn_mc_clc.Location = new System.Drawing.Point(312, 30);
             this.btn_mc_clc.Name = "btn_mc_clc";
             this.btn_mc_clc.Size = new System.Drawing.Size(75, 23);
             this.btn_mc_clc.TabIndex = 20;
@@ -181,10 +183,10 @@
             this.tb_mf.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_mf.Enabled = false;
-            this.tb_mf.Location = new System.Drawing.Point(107, 30);
+            this.tb_mf.Location = new System.Drawing.Point(107, 31);
             this.tb_mf.MaxLength = 16;
             this.tb_mf.Name = "tb_mf";
-            this.tb_mf.Size = new System.Drawing.Size(278, 20);
+            this.tb_mf.Size = new System.Drawing.Size(202, 20);
             this.tb_mf.TabIndex = 19;
             this.tb_mf.Text = "0123456789ABCDEF";
             this.tb_mf.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -314,7 +316,7 @@
             // btn_gen_ser
             // 
             this.btn_gen_ser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_gen_ser.Location = new System.Drawing.Point(391, 82);
+            this.btn_gen_ser.Location = new System.Drawing.Point(390, 82);
             this.btn_gen_ser.Name = "btn_gen_ser";
             this.btn_gen_ser.Size = new System.Drawing.Size(75, 23);
             this.btn_gen_ser.TabIndex = 6;
@@ -347,7 +349,7 @@
             // btn_gen_key
             // 
             this.btn_gen_key.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_gen_key.Location = new System.Drawing.Point(391, 56);
+            this.btn_gen_key.Location = new System.Drawing.Point(390, 56);
             this.btn_gen_key.Name = "btn_gen_key";
             this.btn_gen_key.Size = new System.Drawing.Size(75, 23);
             this.btn_gen_key.TabIndex = 4;
@@ -371,7 +373,7 @@
             this.tb_key.Location = new System.Drawing.Point(107, 57);
             this.tb_key.MaxLength = 16;
             this.tb_key.Name = "tb_key";
-            this.tb_key.Size = new System.Drawing.Size(278, 20);
+            this.tb_key.Size = new System.Drawing.Size(202, 20);
             this.tb_key.TabIndex = 5;
             this.tb_key.Text = "FFFFFFFFFFFFFFFF";
             this.tb_key.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -512,28 +514,28 @@
             this.noneToolStripMenuItem.Checked = true;
             this.noneToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.noneToolStripMenuItem.Name = "noneToolStripMenuItem";
-            this.noneToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.noneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.noneToolStripMenuItem.Text = "None";
             this.noneToolStripMenuItem.Click += new System.EventHandler(this.noneToolStripMenuItem_Click);
             // 
             // simpleLearningToolStripMenuItem
             // 
             this.simpleLearningToolStripMenuItem.Name = "simpleLearningToolStripMenuItem";
-            this.simpleLearningToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.simpleLearningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.simpleLearningToolStripMenuItem.Text = "Simple Learning";
             this.simpleLearningToolStripMenuItem.Click += new System.EventHandler(this.simpleLearningToolStripMenuItem_Click);
             // 
             // normalLearningToolStripMenuItem
             // 
             this.normalLearningToolStripMenuItem.Name = "normalLearningToolStripMenuItem";
-            this.normalLearningToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.normalLearningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.normalLearningToolStripMenuItem.Text = "Normal Learning";
             this.normalLearningToolStripMenuItem.Click += new System.EventHandler(this.normalLearningToolStripMenuItem_Click);
             // 
             // secureLearnToolStripMenuItem
             // 
             this.secureLearnToolStripMenuItem.Name = "secureLearnToolStripMenuItem";
-            this.secureLearnToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.secureLearnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.secureLearnToolStripMenuItem.Text = "Secure Learn";
             this.secureLearnToolStripMenuItem.Click += new System.EventHandler(this.secureLearnToolStripMenuItem_Click);
             // 
@@ -712,6 +714,18 @@
             this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // btn_mc_gen
+            // 
+            this.btn_mc_gen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_mc_gen.Enabled = false;
+            this.btn_mc_gen.Location = new System.Drawing.Point(390, 30);
+            this.btn_mc_gen.Name = "btn_mc_gen";
+            this.btn_mc_gen.Size = new System.Drawing.Size(75, 23);
+            this.btn_mc_gen.TabIndex = 24;
+            this.btn_mc_gen.Text = "Generate";
+            this.btn_mc_gen.UseVisualStyleBackColor = true;
+            this.btn_mc_gen.Click += new System.EventHandler(this.btn_mc_gen_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -724,7 +738,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(665, 445);
             this.Name = "Form1";
-            this.Text = "HCS301 Programmer V0.2.5";
+            this.Text = "HCS301 Programmer V0.2.6";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -804,6 +818,7 @@
         private System.Windows.Forms.Button btn_pp;
         private System.Windows.Forms.ToolStripMenuItem noneToolStripMenuItem;
         private System.Windows.Forms.Button btn_gen_seed;
+        private System.Windows.Forms.Button btn_mc_gen;
     }
 }
 
