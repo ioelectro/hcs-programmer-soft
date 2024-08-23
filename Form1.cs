@@ -929,6 +929,24 @@ namespace Programmer
             print_log("Manufacturer Code Generated " + tb_mf.Text);
         }
 
+        private void hCS301ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            hCS301ToolStripMenuItem.Checked = true;
+            hCS300ToolStripMenuItem.Checked = false;
+
+            rb_9or12v.Text= "9 or 12 V";
+            rb_6v.Text= "6 V";
+        }
+
+        private void hCS300ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            hCS300ToolStripMenuItem.Checked = true;
+            hCS301ToolStripMenuItem.Checked = false;
+
+            rb_9or12v.Text = "5 or 6 V";
+            rb_6v.Text = "3.0 V";
+        }
+
         private void cb_br_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch(cb_br.SelectedIndex)

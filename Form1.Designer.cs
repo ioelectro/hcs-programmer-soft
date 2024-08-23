@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_mc_gen = new System.Windows.Forms.Button();
             this.btn_gen_seed = new System.Windows.Forms.Button();
             this.btn_pp = new System.Windows.Forms.Button();
             this.btn_mc_clc = new System.Windows.Forms.Button();
@@ -87,7 +88,9 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rtb = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btn_mc_gen = new System.Windows.Forms.Button();
+            this.deviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hCS301ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hCS300ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -134,6 +137,18 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Main";
+            // 
+            // btn_mc_gen
+            // 
+            this.btn_mc_gen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_mc_gen.Enabled = false;
+            this.btn_mc_gen.Location = new System.Drawing.Point(390, 30);
+            this.btn_mc_gen.Name = "btn_mc_gen";
+            this.btn_mc_gen.Size = new System.Drawing.Size(75, 23);
+            this.btn_mc_gen.TabIndex = 24;
+            this.btn_mc_gen.Text = "Generate";
+            this.btn_mc_gen.UseVisualStyleBackColor = true;
+            this.btn_mc_gen.Click += new System.EventHandler(this.btn_mc_gen_Click);
             // 
             // btn_gen_seed
             // 
@@ -461,7 +476,8 @@
             this.optionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sERToolStripMenuItem,
             this.discriminationToolStripMenuItem,
-            this.learnModeToolStripMenuItem});
+            this.learnModeToolStripMenuItem,
+            this.deviceToolStripMenuItem});
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.optionsToolStripMenuItem.Text = "Options";
@@ -485,7 +501,7 @@
             // bitToolStripMenuItem
             // 
             this.bitToolStripMenuItem.Name = "bitToolStripMenuItem";
-            this.bitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.bitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bitToolStripMenuItem.Text = "8 Bit";
             this.bitToolStripMenuItem.Click += new System.EventHandler(this.bitToolStripMenuItem_Click);
             // 
@@ -494,7 +510,7 @@
             this.bitToolStripMenuItem1.Checked = true;
             this.bitToolStripMenuItem1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.bitToolStripMenuItem1.Name = "bitToolStripMenuItem1";
-            this.bitToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
+            this.bitToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.bitToolStripMenuItem1.Text = "10 Bit";
             this.bitToolStripMenuItem1.Click += new System.EventHandler(this.bitToolStripMenuItem1_Click);
             // 
@@ -714,17 +730,30 @@
             this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // btn_mc_gen
+            // deviceToolStripMenuItem
             // 
-            this.btn_mc_gen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_mc_gen.Enabled = false;
-            this.btn_mc_gen.Location = new System.Drawing.Point(390, 30);
-            this.btn_mc_gen.Name = "btn_mc_gen";
-            this.btn_mc_gen.Size = new System.Drawing.Size(75, 23);
-            this.btn_mc_gen.TabIndex = 24;
-            this.btn_mc_gen.Text = "Generate";
-            this.btn_mc_gen.UseVisualStyleBackColor = true;
-            this.btn_mc_gen.Click += new System.EventHandler(this.btn_mc_gen_Click);
+            this.deviceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hCS301ToolStripMenuItem,
+            this.hCS300ToolStripMenuItem});
+            this.deviceToolStripMenuItem.Name = "deviceToolStripMenuItem";
+            this.deviceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deviceToolStripMenuItem.Text = "Device";
+            // 
+            // hCS301ToolStripMenuItem
+            // 
+            this.hCS301ToolStripMenuItem.Checked = true;
+            this.hCS301ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.hCS301ToolStripMenuItem.Name = "hCS301ToolStripMenuItem";
+            this.hCS301ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hCS301ToolStripMenuItem.Text = "HCS301";
+            this.hCS301ToolStripMenuItem.Click += new System.EventHandler(this.hCS301ToolStripMenuItem_Click);
+            // 
+            // hCS300ToolStripMenuItem
+            // 
+            this.hCS300ToolStripMenuItem.Name = "hCS300ToolStripMenuItem";
+            this.hCS300ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hCS300ToolStripMenuItem.Text = "HCS300";
+            this.hCS300ToolStripMenuItem.Click += new System.EventHandler(this.hCS300ToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -738,7 +767,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(665, 445);
             this.Name = "Form1";
-            this.Text = "HCS301 Programmer V0.2.6";
+            this.Text = "HCS Programmer V0.2.7";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -819,6 +848,9 @@
         private System.Windows.Forms.ToolStripMenuItem noneToolStripMenuItem;
         private System.Windows.Forms.Button btn_gen_seed;
         private System.Windows.Forms.Button btn_mc_gen;
+        private System.Windows.Forms.ToolStripMenuItem deviceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hCS301ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hCS300ToolStripMenuItem;
     }
 }
 
