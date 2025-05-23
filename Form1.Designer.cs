@@ -66,11 +66,16 @@
             this.discriminationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bitToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.learnModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.simpleLearningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.normalLearningToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.secureLearnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hCS301ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hCS300ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hCS200ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportProblemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,9 +93,6 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rtb = new System.Windows.Forms.RichTextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.deviceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hCS301ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.hCS300ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -493,7 +495,8 @@
             // 
             this.discriminationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bitToolStripMenuItem,
-            this.bitToolStripMenuItem1});
+            this.bitToolStripMenuItem1,
+            this.bitToolStripMenuItem2});
             this.discriminationToolStripMenuItem.Name = "discriminationToolStripMenuItem";
             this.discriminationToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.discriminationToolStripMenuItem.Text = "Discrimination Crop";
@@ -514,6 +517,13 @@
             this.bitToolStripMenuItem1.Text = "10 Bit";
             this.bitToolStripMenuItem1.Click += new System.EventHandler(this.bitToolStripMenuItem1_Click);
             // 
+            // bitToolStripMenuItem2
+            // 
+            this.bitToolStripMenuItem2.Name = "bitToolStripMenuItem2";
+            this.bitToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.bitToolStripMenuItem2.Text = "12 Bit";
+            this.bitToolStripMenuItem2.Click += new System.EventHandler(this.bitToolStripMenuItem2_Click);
+            // 
             // learnModeToolStripMenuItem
             // 
             this.learnModeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -530,30 +540,63 @@
             this.noneToolStripMenuItem.Checked = true;
             this.noneToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.noneToolStripMenuItem.Name = "noneToolStripMenuItem";
-            this.noneToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.noneToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.noneToolStripMenuItem.Text = "None";
             this.noneToolStripMenuItem.Click += new System.EventHandler(this.noneToolStripMenuItem_Click);
             // 
             // simpleLearningToolStripMenuItem
             // 
             this.simpleLearningToolStripMenuItem.Name = "simpleLearningToolStripMenuItem";
-            this.simpleLearningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.simpleLearningToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.simpleLearningToolStripMenuItem.Text = "Simple Learning";
             this.simpleLearningToolStripMenuItem.Click += new System.EventHandler(this.simpleLearningToolStripMenuItem_Click);
             // 
             // normalLearningToolStripMenuItem
             // 
             this.normalLearningToolStripMenuItem.Name = "normalLearningToolStripMenuItem";
-            this.normalLearningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.normalLearningToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.normalLearningToolStripMenuItem.Text = "Normal Learning";
             this.normalLearningToolStripMenuItem.Click += new System.EventHandler(this.normalLearningToolStripMenuItem_Click);
             // 
             // secureLearnToolStripMenuItem
             // 
             this.secureLearnToolStripMenuItem.Name = "secureLearnToolStripMenuItem";
-            this.secureLearnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.secureLearnToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.secureLearnToolStripMenuItem.Text = "Secure Learn";
             this.secureLearnToolStripMenuItem.Click += new System.EventHandler(this.secureLearnToolStripMenuItem_Click);
+            // 
+            // deviceToolStripMenuItem
+            // 
+            this.deviceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hCS301ToolStripMenuItem,
+            this.hCS300ToolStripMenuItem,
+            this.hCS200ToolStripMenuItem});
+            this.deviceToolStripMenuItem.Name = "deviceToolStripMenuItem";
+            this.deviceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deviceToolStripMenuItem.Text = "Device";
+            // 
+            // hCS301ToolStripMenuItem
+            // 
+            this.hCS301ToolStripMenuItem.Checked = true;
+            this.hCS301ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.hCS301ToolStripMenuItem.Name = "hCS301ToolStripMenuItem";
+            this.hCS301ToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.hCS301ToolStripMenuItem.Text = "HCS301";
+            this.hCS301ToolStripMenuItem.Click += new System.EventHandler(this.hCS301ToolStripMenuItem_Click);
+            // 
+            // hCS300ToolStripMenuItem
+            // 
+            this.hCS300ToolStripMenuItem.Name = "hCS300ToolStripMenuItem";
+            this.hCS300ToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.hCS300ToolStripMenuItem.Text = "HCS300";
+            this.hCS300ToolStripMenuItem.Click += new System.EventHandler(this.hCS300ToolStripMenuItem_Click);
+            // 
+            // hCS200ToolStripMenuItem
+            // 
+            this.hCS200ToolStripMenuItem.Name = "hCS200ToolStripMenuItem";
+            this.hCS200ToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.hCS200ToolStripMenuItem.Text = "HCS200";
+            this.hCS200ToolStripMenuItem.Click += new System.EventHandler(this.hCS200ToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -730,31 +773,6 @@
             this.timer1.Interval = 200;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // deviceToolStripMenuItem
-            // 
-            this.deviceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.hCS301ToolStripMenuItem,
-            this.hCS300ToolStripMenuItem});
-            this.deviceToolStripMenuItem.Name = "deviceToolStripMenuItem";
-            this.deviceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.deviceToolStripMenuItem.Text = "Device";
-            // 
-            // hCS301ToolStripMenuItem
-            // 
-            this.hCS301ToolStripMenuItem.Checked = true;
-            this.hCS301ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.hCS301ToolStripMenuItem.Name = "hCS301ToolStripMenuItem";
-            this.hCS301ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.hCS301ToolStripMenuItem.Text = "HCS301";
-            this.hCS301ToolStripMenuItem.Click += new System.EventHandler(this.hCS301ToolStripMenuItem_Click);
-            // 
-            // hCS300ToolStripMenuItem
-            // 
-            this.hCS300ToolStripMenuItem.Name = "hCS300ToolStripMenuItem";
-            this.hCS300ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.hCS300ToolStripMenuItem.Text = "HCS300";
-            this.hCS300ToolStripMenuItem.Click += new System.EventHandler(this.hCS300ToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -851,6 +869,8 @@
         private System.Windows.Forms.ToolStripMenuItem deviceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hCS301ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hCS300ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hCS200ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bitToolStripMenuItem2;
     }
 }
 

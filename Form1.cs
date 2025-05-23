@@ -192,7 +192,12 @@ namespace Programmer
                         sser = sser & 0xff;
                         tb_dis.Text = sser.ToString("X").PadLeft(2, '0');
                     }
-                    
+                    else if (dc == 12)
+                    {
+                        sser = sser & 0xfff;
+                        tb_dis.Text = sser.ToString("X").PadLeft(3, '0');
+                    }
+
                 }
             }
         }
@@ -319,8 +324,15 @@ namespace Programmer
 
             Data[10] = 0;
 
-            Data[11] = ((bsl_1 ? 1 : 0) << 14) | ((bsl_0 ? 1 : 0) << 13) | ((vbat_sel ? 1 : 0) << 12) | ((ovr_set ? 1 : 0) << 11) | ((ovr_set ? 1 : 0) << 10) | dis;
-        }
+            if (hCS200ToolStripMenuItem.Checked == true)
+            {
+                Data[11] = ((bsl_0 ? 1 : 0) << 13) | ((vbat_sel ? 1 : 0) << 12) | dis;
+            }
+            else
+            {
+                Data[11] = ((bsl_1 ? 1 : 0) << 14) | ((bsl_0 ? 1 : 0) << 13) | ((vbat_sel ? 1 : 0) << 12) | ((ovr_set ? 1 : 0) << 11) | ((ovr_set ? 1 : 0) << 10) | dis;
+            }
+         }
 
         public void write_data()
         {
@@ -673,20 +685,44 @@ namespace Programmer
             }
         }
 
+        void set_dc(int value)
+        {
+            dc = value;
+            if(dc==12)
+            {
+                bitToolStripMenuItem2.Checked = true;
+                bitToolStripMenuItem1.Checked = false;
+                bitToolStripMenuItem.Checked = false;
+            }
+            else if(dc==10)
+            {
+                bitToolStripMenuItem2.Checked = false;
+                bitToolStripMenuItem1.Checked = true;
+                bitToolStripMenuItem.Checked = false;
+            }
+            else if(dc==8)
+            {
+                bitToolStripMenuItem2.Checked = false;
+                bitToolStripMenuItem1.Checked = false;
+                bitToolStripMenuItem.Checked = true;
+            }
+
+            if (cb_dis_auto.Checked) check_msb_ser();
+        }
+        private void bitToolStripMenuItem2_Click(object sender, EventArgs e) // 11Bit
+        {
+            set_dc(12);
+        }
+
+
         private void bitToolStripMenuItem1_Click(object sender, EventArgs e) // 10 Bit
         {
-            dc = 10;
-            bitToolStripMenuItem1.Checked = true;
-            bitToolStripMenuItem.Checked = false;
-            if (cb_dis_auto.Checked) check_msb_ser();
+            set_dc(10);
         }
 
         private void bitToolStripMenuItem_Click(object sender, EventArgs e) //8 Bit
         {
-            dc = 8;
-            bitToolStripMenuItem1.Checked = false;
-            bitToolStripMenuItem.Checked = true;
-            if (cb_dis_auto.Checked) check_msb_ser();
+            set_dc(8);
         }
 
         private void noneToolStripMenuItem_Click(object sender, EventArgs e)
@@ -933,19 +969,63 @@ namespace Programmer
         {
             hCS301ToolStripMenuItem.Checked = true;
             hCS300ToolStripMenuItem.Checked = false;
+            hCS200ToolStripMenuItem.Checked = false;
+
+            cb_ovr_set.Checked = true;
+            cb_ovr_set.Enabled = true;
 
             rb_9or12v.Text= "9 or 12 V";
             rb_6v.Text= "6 V";
+
+            string[] obj = new string[] { "00 400uS ALL", "01 200uS 1 / 2", "10 100uS 1 / 2", "11 100uS  1 / 4" };
+            cb_br.Items.Clear();
+            cb_br.Items.AddRange(obj);
+            cb_br.SelectedIndex = 0;
+
+            set_dc(10);
         }
 
         private void hCS300ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            hCS300ToolStripMenuItem.Checked = true;
             hCS301ToolStripMenuItem.Checked = false;
+            hCS300ToolStripMenuItem.Checked = true;
+            hCS200ToolStripMenuItem.Checked = false;
+
+            cb_ovr_set.Checked = true;
+            cb_ovr_set.Enabled = true;
 
             rb_9or12v.Text = "5 or 6 V";
             rb_6v.Text = "3.0 V";
+
+            string[] obj = new string[] { "00 400uS ALL", "01 200uS 1 / 2", "10 100uS 1 / 2", "11 100uS  1 / 4" };
+            cb_br.Items.Clear();
+            cb_br.Items.AddRange(obj);
+            cb_br.SelectedIndex = 0;
+
+            set_dc(10);
         }
+
+        private void hCS200ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            hCS301ToolStripMenuItem.Checked = false;
+            hCS300ToolStripMenuItem.Checked = false;
+            hCS200ToolStripMenuItem.Checked = true;
+
+            cb_ovr_set.Checked = false;
+            cb_ovr_set.Enabled = false;
+
+            rb_9or12v.Text = "9 or 12 V";
+            rb_6v.Text = "6 V";
+
+            string[] obj= new string[]{ "0 400uS ALL", "1 200uS 1 / 2" };
+            cb_br.Items.Clear();
+            cb_br.Items.AddRange(obj);
+            cb_br.SelectedIndex = 0;
+
+            set_dc(12);
+
+        }
+
 
         private void cb_br_SelectedIndexChanged(object sender, EventArgs e)
         {
