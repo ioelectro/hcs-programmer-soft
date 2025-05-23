@@ -580,21 +580,21 @@
             this.hCS301ToolStripMenuItem.Checked = true;
             this.hCS301ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.hCS301ToolStripMenuItem.Name = "hCS301ToolStripMenuItem";
-            this.hCS301ToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.hCS301ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.hCS301ToolStripMenuItem.Text = "HCS301";
             this.hCS301ToolStripMenuItem.Click += new System.EventHandler(this.hCS301ToolStripMenuItem_Click);
             // 
             // hCS300ToolStripMenuItem
             // 
             this.hCS300ToolStripMenuItem.Name = "hCS300ToolStripMenuItem";
-            this.hCS300ToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.hCS300ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.hCS300ToolStripMenuItem.Text = "HCS300";
             this.hCS300ToolStripMenuItem.Click += new System.EventHandler(this.hCS300ToolStripMenuItem_Click);
             // 
             // hCS200ToolStripMenuItem
             // 
             this.hCS200ToolStripMenuItem.Name = "hCS200ToolStripMenuItem";
-            this.hCS200ToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.hCS200ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.hCS200ToolStripMenuItem.Text = "HCS200";
             this.hCS200ToolStripMenuItem.Click += new System.EventHandler(this.hCS200ToolStripMenuItem_Click);
             // 
@@ -785,7 +785,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(665, 445);
             this.Name = "Form1";
-            this.Text = "HCS Programmer V0.2.7";
+            this.Text = "HCS Programmer V0.2.8";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
