@@ -1,6 +1,11 @@
 # HCS Programmer Software
-An open source application for programming HCS300 & HCS301 EEPROM Code Hopping.<br>
+An open source application for programming HCS EEPROM Code Hopping.<br>
 Support keeloq key generation from manufacturer code for Simple, Normal and Secure learning algorithm.
+
+**Supported device:**
+- HCS301
+- HCS300
+- HCS200
 
 ![HCS301 Programmer Software](https://github.com/ioelectro/hcs-programmer-soft/assets/64005694/64d4748a-6646-4d7a-a4ea-575787c3c4b4)
 ## Download
